@@ -33,6 +33,7 @@ Depending on whether or not you have already installed Shinobi, your install is 
 #### :black_square_button: Composer
 
     composer require smarch/watchtower
+> :construction: not yet able, haven't marked it as stable yet. Use `"smarch/watchtower": "dev-master"` in your composer.json while this is in alpha.
 
 #### :pencil: Service Provider
 
@@ -62,7 +63,10 @@ While Watchtower itself does not need a facade, one is provided if you wish to u
 
 #### :card_index: Database Migrations / Seeds
 
-If you did not install Shinobi earlier, you will need to run the migration files to properly set up and create the necessary tables. From your command prompt (wherever you run your artisan commands) enter the following command <kbd>php artisan publish</kbd> and then <kbd>php artisan migrate</kbd>. This should properly create your necessary tables AND create the Watchtower config file *(which allows you to define any views / permissions you wish to change from their defaults)*.
+If you did not install Shinobi earlier, you will need to run the migration files to properly set up and create the necessary tables. From your command prompt (wherever you run your artisan commands) enter the following command <kbd>php artisan vendor:publish</kbd> and then <kbd>php artisan migrate</kbd>. This should properly create your necessary tables AND create the Watchtower config file *(which allows you to define any views / permissions you wish to change from their defaults)*.
+
+    php artisan vendor:publish
+    php artisan migrate
 
 > :hand: ***Note*** If you already have your roles and permissions set up, you can skip the following step and just change the Watchtower config file to reflect the permissions it should use to permit functionality.
 
@@ -95,9 +99,31 @@ Once this is all finished, you should be able to go to
 ![](http://i.imgur.com/ou6oses.png)
 
  and be rewarded with a big ole warning. :smile: That's normal. This shows you that Shinobi is working and properly protecting your admin *(Watchtower)* area. Just login with admin@change.me and password *(if you used the db:seed command)* and you will have full access. If you already had a user in your database, log in with that first user to enable access. `By default, the db:seed command will associate the admin role with `user->id = 1` in the database.`
+ 
+> :hand: **Note** If you have not setup a login redirect yet, and don't have a HOME view, you will probably get another route error. Create a route for Home or redirect your logins or just type the http://yoursite/watchtowr again.
 
 #### :exclamation: Laravel Authentication Views (login, etc...)
 Watchtower does not ship with the default laravel authentication views/routes, since Laravel removed them in 5.1. However you can find some samples from Laravel here : [Laravel Login / Auth Views](http://laravel.com/docs/5.1/authentication#authentication-quickstart) that will provide you with the routes / views necessary to permit login and registration.
+
+You will need the following routes for authentication. (also provided on Laravel auth link above)
+
+	routes.php 
+	// Authentication routes...
+	Route::get('auth/login', 'Auth\AuthController@getLogin');
+	Route::post('auth/login', 'Auth\AuthController@postLogin');
+	Route::get('auth/logout', 'Auth\AuthController@getLogout');
+	
+	// Registration routes...
+	Route::get('auth/register', 'Auth\AuthController@getRegister');
+	Route::post('auth/register', 'Auth\AuthController@postRegister');
+	
+	// Password reset link request routes...
+	Route::get('password/email', 'Auth\PasswordController@getEmail');
+	Route::post('password/email', 'Auth\PasswordController@postEmail');
+	
+	// Password reset routes...
+	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+	Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 
 #### :trident: Why "Watchtower"?
