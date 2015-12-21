@@ -100,7 +100,7 @@ Once this is all finished, you should be able to go to
 
  and be rewarded with a big ole warning. :smile: That's normal. This shows you that Shinobi is working and properly protecting your admin *(Watchtower)* area. Just login with admin@change.me and password *(if you used the db:seed command)* and you will have full access. If you already had a user in your database, log in with that first user to enable access. `By default, the db:seed command will associate the admin role with `user->id = 1` in the database.`
  
-> :hand: **Note** If you have not setup a login redirect yet, and don't have a HOME view, you will probably get another route error. Create a route for Home or redirect your logins or just type the http://yoursite/watchtowr again.
+> :hand: **Note** If you have not setup a login redirect yet, and don't have a HOME route and view, you will probably get another route error. Create a route for Home or [redirect your logins](http://laravel.com/docs/5.1/authentication#included-authenticating) or just type the url of http://yoursite/watchtower again. 
 
 #### :exclamation: Laravel Authentication Views (login, etc...)
 Watchtower does not ship enabled _(see note below after routes)_ with the default laravel authentication views/routes, since Laravel removed them in 5.1. However you can find some samples / information from Laravel here : [Laravel Login / Auth Views](http://laravel.com/docs/5.1/authentication#authentication-quickstart) that will provide you with the routes / views necessary to permit login and registration.
