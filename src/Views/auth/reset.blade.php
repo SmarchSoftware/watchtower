@@ -12,26 +12,35 @@
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group">
+                                <div class="input-group">
+                                  <div class="input-group-addon"><i class="fa fa-1x fa-fw fa-envelope"></i></div>
                             <label class="col-md-4 control-label">E-Mail Address</label>
                             <div class="col-md-6">
                                 <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                                 {!! $errors->first('email', '<div class="text-danger">:message</div>') !!}
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Password</label>
                             <div class="col-md-6">
+                                <div class="input-group">
+                                  <div class="input-group-addon"><i class="fa fa-1x fa-fw fa-lock"></i></div>
                                 <input type="password" class="form-control" name="password">
                                 {!! $errors->first('password', '<div class="text-danger">:message</div>') !!}
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Confirm Password</label>
                             <div class="col-md-6">
+                                <div class="input-group">
+                                  <div class="input-group-addon"><i class="fa fa-1x fa-fw fa-lock"></i></div>
                                 <input type="password" class="form-control" name="password_confirmation">
                                 {!! $errors->first('password_confirmation', '<div class="text-danger">:message</div>') !!}
+                                </div>
                             </div>
                         </div>
 
