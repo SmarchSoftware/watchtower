@@ -49,7 +49,6 @@ Once composer has installed the necessary packages for watchtower to function yo
 
 #### :pencil: Facades
 While Watchtower itself does not need a facade, one is provided if you wish to use one. However the Shinobi and Forms facades are used heavily by Watchtower so be sure you add them to your Facades.
-**Example**
 
 *config/app.php*
 
@@ -69,7 +68,7 @@ If you did not install Shinobi earlier, you will need to run the migration files
 
 To permit the ability to restrict and permit access to the various admin areas of Watchtower, you will need to run the Watchtower seeder which will prepopulate your database with permissions and roles.
 
-    php artisan db:seed --class Smarch\Watchtower\WatchtowerTableSeeder
+    php artisan db:seed --class Smarch\Watchtower\Seeds\WatchtowerTableSeeder
 
 #### :memo: Shinobi usage requirements
 If you are installing Shinobi now, with Watchtower, you will need to also make the following changes so that you can use Shinobi's RBAC functions instead of Laravel defaulting to its own "Gate" authorization methods. Modify your User model to reflect the following changes : 
