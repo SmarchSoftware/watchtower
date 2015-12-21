@@ -6,7 +6,8 @@ A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffe
 
 ![enter image description here](http://i.imgur.com/zYBjWsF.png)
 
-This page is intended for installation, please check out the wiki for more information about usage. (:construction: Currently completed: none. Currently incomplete: :busts_in_silhouette: Roles, :bust_in_silhouette: User, :key: Permissions, :scroll: Config FIles)
+This page is intended for installation, please check out the wiki for more information about usage.
+_(:construction: Completed: none. Underway : :scroll: [Configuration Options](https://github.com/SmarchSoftware/watchtower/wiki/Configuration-Options). Not yet started: :busts_in_silhouette: Roles, :bust_in_silhouette: User, :key: Permissions.)_
 
 ## Overview
 
