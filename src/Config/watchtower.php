@@ -106,6 +106,15 @@ return [
     |
     */   
    'views' => [
+        'layouts' => [
+            'master'    => 'watchtower::layouts.master',
+            'flash'     => 'watchtower::partials.flash',
+            'modal'     => 'watchtower::partials.modal',
+            'search'    => 'watchtower::partials.search',
+            'dashboard' => 'watchtower::watchtower.index',
+            'adminlinks'=> 'watchtower::watchtower.links',
+        ],
+
         'users' => [
             'index'     => 'watchtower::user.index',            
             'create'    => 'watchtower::user.create',
@@ -131,7 +140,7 @@ return [
             'show'      => 'watchtower::partials.edit',
             'edit'      => 'watchtower::partials.edit',
             'role'      => 'watchtower::permission.role'
-        ],
+        ]
     ],
 
 

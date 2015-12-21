@@ -1,4 +1,4 @@
-@extends('watchtower::layouts.master')
+@extends(config('watchtower.views.layouts.master'))
 
 @section('content')
 
@@ -21,7 +21,7 @@
     </h1>
 
     <!-- search bar -->
-    @include('watchtower::partials.search', [ 'search_route' => 'watchtower.permission.index', 'items' => $permissions, 'acl' => 'permission' ] )
+    @include( config('watchtower.views.layouts.search'), [ 'search_route' => 'watchtower.permission.index', 'items' => $permissions, 'acl' => 'permission' ] )
 
     <div class="table">
         <table class="table table-hover">

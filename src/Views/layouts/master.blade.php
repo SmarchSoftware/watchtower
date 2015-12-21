@@ -123,7 +123,7 @@
 	</nav>
 
 	<div class="container">
-		@include('watchtower::partials.flash')
+		@include(config('watchtower.views.layouts.flash'))
 	
 		@yield('content')
 	</div>

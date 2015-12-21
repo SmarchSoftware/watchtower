@@ -1,4 +1,4 @@
-@extends('watchtower::layouts.master')
+@extends(config('watchtower.views.layouts.master'))
 
 @section('content')
 
@@ -14,25 +14,8 @@
 
     @foreach ( array_chunk($dashboard, 4) as $chunk )
         <div class="row text-center">
-        @foreach ($chunk as $link)
-            <div class="col-lg-3 col-md-6" title="{{ $link['name'] }}">
-                <div class="panel panel-{{ $link['colour'] }}">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <i class="{{ $link['icon'] }}"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="{{ route($link['route']) }}">
-                        <div class="panel-footer">
-                            <span class="pull-left">{{ $link['name'] }}</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+        @foreach ($chunk as $item)
+            @include( config('watchtower.views.layouts.adminlinks'), [ 'item' => $item ] )
         @endforeach
     </div>
     <!-- /.row -->
