@@ -6,6 +6,8 @@ A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffe
 
 ![enter image description here](http://i.imgur.com/zYBjWsF.png)
 
+This page is intended for installation, please check out the wiki for more information about usage. (:construction: Currently completed: none. Currently incomplete: :busts_in_silhouette: Roles, :bust_in_silhouette: User, :key: Permissions, :scroll: Config FIles)
+
 ## Overview
 
 This package is to administer / manage your roles and permissions tables with the Shinobi role based access control system for Laravel 5.
