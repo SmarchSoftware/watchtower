@@ -103,7 +103,7 @@ Once this is all finished, you should be able to go to
 > :hand: **Note** If you have not setup a login redirect yet, and don't have a HOME view, you will probably get another route error. Create a route for Home or redirect your logins or just type the http://yoursite/watchtowr again.
 
 #### :exclamation: Laravel Authentication Views (login, etc...)
-Watchtower does not ship with the default laravel authentication views/routes, since Laravel removed them in 5.1. However you can find some samples from Laravel here : [Laravel Login / Auth Views](http://laravel.com/docs/5.1/authentication#authentication-quickstart) that will provide you with the routes / views necessary to permit login and registration.
+Watchtower does not ship enabled _(see note below after routes)_ with the default laravel authentication views/routes, since Laravel removed them in 5.1. However you can find some samples / information from Laravel here : [Laravel Login / Auth Views](http://laravel.com/docs/5.1/authentication#authentication-quickstart) that will provide you with the routes / views necessary to permit login and registration.
 
 You will need the following routes for authentication. (also provided on Laravel auth link above)
 
@@ -125,6 +125,7 @@ You will need the following routes for authentication. (also provided on Laravel
 	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 	Route::post('password/reset', 'Auth\PasswordController@postReset');
 
+> :hand: **Note** As a convenience, the default Laravel auth views are included with watchtower in the "smarch\watchtower\Views\auth" folder. Simply copy and paste these to your "root\resources\views" folder to enable them.
 
 #### :trident: Why "Watchtower"?
 I've been a DC geek for over 30 years now. Watchtower is the name of the floating spacestation the Justice League used to monitor / administer the super heroes. ....coulda been worse. I was thinking of going with OMAC for a while. :smile:
