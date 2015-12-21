@@ -1,0 +1,25 @@
+{
+    "name": "smarch/watchtower",
+    "type": "package",
+    "description": "Front-end for the Shinboi Auth system of Users / Roles / Permissions in Laravel 5.1",
+    "license": "MIT",
+    "homepage": "https://github.com/SmarchSoftware/watchtower",
+    "keywords": ["authorization", "rbac", "permissions", "roles", "gui", "admin", "shinobi", "laravel"],
+    "authors": [
+        {
+            "name": "Smarch Software",
+            "email": "packages@smarchsoft.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.1.*",
+        "laravelcollective/html": "5.1.*",
+        "caffeinated/shinobi": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Smarch\\Watchtower\\": "src/"
+        }
+    }
+}
