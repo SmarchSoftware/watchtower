@@ -1,4 +1,4 @@
-# :construction: :construction: Under Construction :construction: :construction:
+# :construction: :construction: Documentation Under Construction :construction: :construction:
 
 # The Watchtower
 
@@ -10,7 +10,7 @@ A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffe
 
 This package is to administer / manage your roles and permissions tables with the Shinobi role based access control system for Laravel 5.
 
-> **Note:**
+> :hand: **Note:**
 > Shinobi is a required part of this package. This package is merely the GUI front end for the Shinobi package and this Watchtower package does not actually provide any of the authorization functionality. If you don't already have the Shinobi package installed, it will be installed as part of the installation of Watchtower.
 
 It will give you full control over your roles :busts_in_silhouette:, their permissions :key: and the users :bust_in_silhouette: that have access to them. You will be able to add, edit, update, delete and synchronize all three as needed. 
