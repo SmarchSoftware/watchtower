@@ -10,7 +10,7 @@ This page is intended for installation, please check out the wiki for more infor
 
 :construction: :construction: :construction: :construction:
 
-Completed | Underway | Not Started
+Wiki Completed | Wiki Underway | Wiki Not Started
 ----------|----------|-------------
 :scroll: [Configuration Options](https://github.com/SmarchSoftware/watchtower/wiki/Configuration-Options) | :key: [Permissions](https://github.com/SmarchSoftware/watchtower/wiki/Permissions) |  :busts_in_silhouette: Roles
 :bust_in_silhouette: [Users](https://github.com/SmarchSoftware/watchtower/wiki/Users) | --- | ---
