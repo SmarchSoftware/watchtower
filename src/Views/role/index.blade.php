@@ -91,7 +91,7 @@
   @else
 
       <div class="alert alert-danger lead">
-        <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to view user list.
+        <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to view role list.
       </div>
 
   @endif
