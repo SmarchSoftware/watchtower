@@ -135,7 +135,7 @@ class WatchtowerTableSeeder extends Seeder
             [ 
                 'name'          => 'Edit role',
                 'slug'          => 'edit.role',
-                'description'   => 'Edit an existing suer'
+                'description'   => 'Edit an existing role'
             ],
 
             [ 
@@ -183,7 +183,7 @@ class WatchtowerTableSeeder extends Seeder
             [ 
                 'name'          => 'Edit permission',
                 'slug'          => 'edit.permission',
-                'description'   => 'Edit an existing suer'
+                'description'   => 'Edit an existing permission'
             ],
 
             [ 
