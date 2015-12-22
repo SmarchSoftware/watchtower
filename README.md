@@ -7,8 +7,11 @@ A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffe
 ![enter image description here](http://i.imgur.com/zYBjWsF.png)
 
 This page is intended for installation, please check out the wiki for more information about usage.
-_(:construction: Completed: [Configuration Options](https://github.com/SmarchSoftware/watchtower/wiki/Configuration-Options), :bust_in_silhouette: [Users](https://github.com/SmarchSoftware/watchtower/wiki/Users). Underway : :key: [Permissions](https://github.com/SmarchSoftware/watchtower/wiki/Permissions). Not yet started: :busts_in_silhouette: Roles, :key: Permissions.)_
-
+:construction:
+|Completed | Underway | Not Started |
+|--|--|--|
+|:scroll: [Configuration Options](https://github.com/SmarchSoftware/watchtower/wiki/Configuration-Options)| :key: [Permissions](https://github.com/SmarchSoftware/watchtower/wiki/Permissions) |  :busts_in_silhouette: Roles|
+|:bust_in_silhouette: [Users](https://github.com/SmarchSoftware/watchtower/wiki/Users)|---|---|
 ## Overview
 
 This package is to administer / manage your roles and permissions tables with the Shinobi role based access control system for Laravel 5.
