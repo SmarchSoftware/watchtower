@@ -40,9 +40,9 @@ class PermissionController extends Controller
 			$permissions = Permission::where('name', 'LIKE', '%'.$value.'%')
 				->orWhere('slug', 'LIKE', '%'.$value.'%')
 				->orWhere('description', 'LIKE', '%'.$value.'%')
-				->orderBy('name')->paginate(15);
+				->orderBy('name')->paginate( config('watchtower.pagination.permissions', 15) );
 		} else {
-			$permissions = Permission::orderBy('name')->paginate(15);	
+			$permissions = Permission::orderBy('name')->paginate( config('watchtower.pagination.permissions', 15) );	
 		}
 		
 		return view( config('watchtower.views.permissions.index'), compact('permissions', 'value') );

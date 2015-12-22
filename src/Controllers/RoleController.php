@@ -41,9 +41,9 @@ class RoleController extends Controller
 			$roles = Role::where('name', 'LIKE', '%'.$value.'%')
 				->orWhere('slug', 'LIKE', '%'.$value.'%')
 				->orWhere('description', 'LIKE', '%'.$value.'%')
-				->orderBy('name')->paginate(15);
+				->orderBy('name')->paginate( config('watchtower.pagination.roles', 15) );
 		} else {
-			$roles = Role::orderBy('name')->paginate(15);
+			$roles = Role::orderBy('name')->paginate( config('watchtower.pagination.roles', 15) );
 		}
 		
 		return view( config('watchtower.views.roles.index'), compact('roles', 'value') );

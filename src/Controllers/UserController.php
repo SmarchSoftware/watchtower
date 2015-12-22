@@ -34,9 +34,9 @@ class UserController extends Controller
 		if ( $request->has('search_value') ) {
 			$value = $request->get('search_value');
 			$users = User::where('name', 'LIKE', '%'.$value.'%')
-				->orderBy('name')->paginate(15);
+				->orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
 		} else {
-			$users = User::orderBy('name')->paginate(15);
+			$users = User::orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
 		}
 		
 		return view( config('watchtower.views.users.index'), compact('users', 'value') );

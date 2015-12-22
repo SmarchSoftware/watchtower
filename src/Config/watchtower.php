@@ -179,6 +179,22 @@ return [
             'icon'  => 'fa fa-5x fa-key',
             'colour'=> 'success'
         ],
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Watchtower pagination
+    |--------------------------------------------------------------------------
+    |
+    | The default is to show 15 items per page. Change this to whatever
+    | value you prefer. Note, doesn't apply to matrices.
+    |
+    */
+    'pagination' => [
+        'users'         => '15',
+        'roles'         => '15',
+        'permissions'   => '15',
     ]
 
 ];
