@@ -12,8 +12,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="panel panel-primary">
         <div class="panel-heading clearfix">
-          <i class="icon-calendar"></i>
-          <h2 class="panel-title">Current Roles <small>({{$roles->count()}})</small></h2>
+          <h2 class="panel-title"><i class="fa fa-users fa-lg"></i> Current Roles <small>({{$roles->count()}})</small></h2>
         </div>
         
         <div class="panel-body">
@@ -40,8 +39,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="panel panel-primary">
         <div class="panel-heading clearfix">
-          <i class="icon-calendar"></i>
-          <h2 class="panel-title">Available Roles <small>({{$available_roles->count()}})</small></h2>
+          <h2 class="panel-title"><i class="fa fa-users"></i> Available Roles <small>({{$available_roles->count()}})</small></h2>
         </div>
         
         <div class="panel-body">

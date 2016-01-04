@@ -12,8 +12,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="panel panel-primary">
         <div class="panel-heading clearfix">
-          <i class="icon-calendar"></i>
-          <h2 class="panel-title">Current Users <small>({{$users->count()}})</small></h2>
+          <h2 class="panel-title"><i class="fa fa-user fa-lg"></i> Current Users <small>({{$users->count()}})</small></h2>
         </div>
         
         <div class="panel-body">
@@ -35,8 +34,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="panel panel-primary">
         <div class="panel-heading clearfix">
-          <i class="icon-calendar"></i>
-          <h2 class="panel-title">Available Users <small>({{$available_users->count()}})</small></h2>
+          <h2 class="panel-title"><i class="fa fa-user"></i> Available Users <small>({{$available_users->count()}})</small></h2>
         </div>
         
         <div class="panel-body">

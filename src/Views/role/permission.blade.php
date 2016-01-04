@@ -12,8 +12,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="panel panel-primary">
         <div class="panel-heading clearfix">
-          <i class="icon-calendar"></i>
-          <h2 class="panel-title">Current Permissions <small>({{$permissions->count()}})</small></h2>
+          <h2 class="panel-title"><i class="fa fa-key fa-lg"></i> Current Permissions <small>({{$permissions->count()}})</small></h2>
         </div>
         
         <div class="panel-body">
@@ -35,8 +34,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="panel panel-primary">
         <div class="panel-heading clearfix">
-          <i class="icon-calendar"></i>
-          <h2 class="panel-title">Available Permissions <small>({{$available_permissions->count()}})</small></h2>
+          <h2 class="panel-title"><i class="fa fa-key"></i> Available Permissions <small>({{$available_permissions->count()}})</small></h2>
         </div>
         
         <div class="panel-body">
