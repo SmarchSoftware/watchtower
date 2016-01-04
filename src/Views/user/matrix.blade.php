@@ -70,12 +70,4 @@
     @endif
   {!! Form::close() !!}
 
-  @else
-
-    <div class="alert alert-danger lead">
-      <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to view user roles matrix.
-    </div>
-
-  @endif
-
 @endsection
