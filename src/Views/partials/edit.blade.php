@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Edit '{{ $resource->name }}'</h1>
+    <h1>{{ ( ($show == '0') ? 'Edit' : 'Viewing' ) }} '{{ $resource->name }}'</h1>
     <hr/>
 
     {!! Form::model($resource, ['method' => 'PATCH', 'route' => [ 'watchtower.'.$route.'.update', $resource->id ], 'class' => 'form-horizontal']) !!}

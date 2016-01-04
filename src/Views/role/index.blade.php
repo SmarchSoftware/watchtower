@@ -3,18 +3,22 @@
 @section('content')
 
     <h1>Roles
-    <div class="btn-group pull-right" role="group" aria-label="...">    
+    <div class="btn-group pull-right" role="group" aria-label="...">
+      @if ( Shinobi::can( config('watchtower.acl.role.viewmatrix', false) ) )
       <a href="{{ route('watchtower.role.matrix') }}">
       <button type="button" class="btn btn-default">
         <i class="fa fa-th fa-fw"></i> 
         <span class="hidden-xs hidden-sm">Role Matrix</span>
       </button></a>
+      @endif
 
-      <a href="{{ route('watchtower.role.create') }}">
-      <button type="button" class="btn btn-info">
-        <i class="fa fa-plus fa-fw"></i> 
-        <span class="hidden-xs hidden-sm">Add New Role</span>
-      </button></a>
+      @if ( Shinobi::can( config('watchtower.acl.role.create', false) ) )
+        <a href="{{ route('watchtower.role.create') }}">
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-plus fa-fw"></i> 
+          <span class="hidden-xs hidden-sm">Add New Role</span>
+        </button></a>
+      @endif
     </div>
     </h1>
 

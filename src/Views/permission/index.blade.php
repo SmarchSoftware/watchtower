@@ -4,17 +4,21 @@
 
     <h1>Permissions
     <div class="btn-group pull-right" role="group" aria-label="...">    
-      <a href="{{ route('watchtower.role.matrix') }}">
-      <button type="button" class="btn btn-default">
-        <i class="fa fa-th fa-fw"></i> 
-        <span class="hidden-xs hidden-sm">Role Matrix</span>
-      </button></a>
+      @if ( Shinobi::can( config('watchtower.acl.role.viewmatrix', false) ) )
+        <a href="{{ route('watchtower.role.matrix') }}">
+        <button type="button" class="btn btn-default">
+          <i class="fa fa-th fa-fw"></i> 
+          <span class="hidden-xs hidden-sm">Role Matrix</span>
+        </button></a>
+      @endif
 
-      <a href="{{ route('watchtower.permission.create') }}">
-      <button type="button" class="btn btn-info">
-        <i class="fa fa-plus fa-fw"></i> 
-        <span class="hidden-xs hidden-sm">Add New Permission</span>
-      </button></a>
+      @if ( Shinobi::can( config('watchtower.acl.permission.create', false) ) )
+        <a href="{{ route('watchtower.permission.create') }}">
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-plus fa-fw"></i> 
+          <span class="hidden-xs hidden-sm">Add New Permission</span>
+        </button></a>
+      @endif
     </div>
     </h1>
 
