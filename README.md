@@ -8,14 +8,10 @@ A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffe
 
 This page is intended for installation, please check out the wiki for more information about usage.
 
-:construction: :construction: :construction: :construction:
-
-Wiki Completed | Wiki Underway | Wiki Not Started
-----------|----------|-------------
-:scroll: [Configuration Options](https://github.com/SmarchSoftware/watchtower/wiki/Configuration-Options) | :key: [Permissions](https://github.com/SmarchSoftware/watchtower/wiki/Permissions) |  :busts_in_silhouette: Roles
-:bust_in_silhouette: [Users](https://github.com/SmarchSoftware/watchtower/wiki/Users) | --- | ---
-
-:construction: :construction: :construction: :construction:
+:scroll: [Configuration Options](https://github.com/SmarchSoftware/watchtower/wiki/Configuration-Options)
+:key: [Permissions](https://github.com/SmarchSoftware/watchtower/wiki/Permissions)
+:busts_in_silhouette: [Roles](https://github.com/SmarchSoftware/watchtower/wiki/Roles)
+:bust_in_silhouette: [Users](https://github.com/SmarchSoftware/watchtower/wiki/Users)
 
 ## Overview
 
