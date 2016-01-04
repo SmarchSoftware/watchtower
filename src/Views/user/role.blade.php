@@ -12,8 +12,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="panel panel-primary">
         <div class="panel-heading clearfix">
-          <i class="icon-calendar"></i>
-          <h2 class="panel-title">Current Roles <small>({{$roles->count()}})</small></h2>
+          <h2 class="panel-title"><i class="fa fa-lg fa-users"></i> Current Roles <small>({{$roles->count()}})</small></h2>
         </div>
         
         <div class="panel-body">
@@ -40,8 +39,8 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="panel panel-primary">
         <div class="panel-heading clearfix">
-          <i class="icon-calendar"></i>
-          <h2 class="panel-title">Available Roles <small>({{$available_roles->count()}})</small></h2>
+          <h2 class="panel-title">
+          <i class="fa fa-users"></i> Available Roles <small>({{$available_roles->count()}})</small></h2>
         </div>
         
         <div class="panel-body">
@@ -68,16 +67,20 @@
       <div class="col-sm-3">
           {!! Form::submit('Update Roles', ['class' => 'btn btn-primary form-control']) !!}
       </div>
+      <div class="col-sm-9">
+        <button class="btn btn-info pull-right" type="button" data-toggle="collapse" data-target="#collapsePermissions" aria-expanded="false" aria-controls="collapsePermissions">
+          Toggle Permissions
+        </button>
+      </div>
   </div>
 
   {!! Form::close() !!}
 
-  <div class="row">
+  <div class="row panel-collapse collapse" id="collapsePermissions">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="panel panel-info">
         <div class="panel-heading clearfix">
-          <i class="icon-calendar"></i>
-          <h2 class="panel-title">{{$user->name}}'s Permissions (from current roles)</small></h2>
+          <h2 class="panel-title"><i class="fa fa-key"></i> {{$user->name}}'s Permissions (from current roles)</small></h2>
         </div>
         
         <div class="panel-body">
