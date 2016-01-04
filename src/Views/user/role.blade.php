@@ -83,12 +83,21 @@
         <div class="panel-body">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <ul class="list-unstyled">
-              @foreach($permissions as $prole => $perm)
-              <li><strong>{{$prole}}</strong></li>
+              @foreach($roles as $prole)
+              <li><strong>{{$prole->name}}</strong></li>
                 <ul>
-                @foreach($perm as $p)      
-                  <li>{{$p->name}} <em>({{ $p->slug }})</em></li>
-                @endforeach
+                  @if ($prole->special == 'all-access')
+                    <li><i class="fa fa-fw fa-star text-success"></i> All Access</li>
+                  @elseif ($prole->special == 'no-access')
+                    <li><i class="fa fa-fw fa-ban text-danger"></i> No Access</li>
+                  @else
+                    @if ( $prole->permissions()->count() <= 0 ) 
+                      <li>This role has no defined permissions</li>
+                    @endif
+                    @foreach($prole->permissions as $p)
+                      <li>{{$p->name}} <em>({{ $p->slug }})</em></li>
+                    @endforeach
+                  @endif
                 </ul>
               @endforeach
             </ul>
