@@ -107,12 +107,13 @@ return [
     */   
    'views' => [
         'layouts' => [
-            'master'    => 'watchtower::layouts.master',
-            'flash'     => 'watchtower::partials.flash',
-            'modal'     => 'watchtower::partials.modal',
-            'search'    => 'watchtower::partials.search',
-            'dashboard' => 'watchtower::watchtower.index',
-            'adminlinks'=> 'watchtower::watchtower.links',
+            'master'        => 'watchtower::layouts.master',
+            'flash'         => 'watchtower::partials.flash',
+            'modal'         => 'watchtower::partials.modal',
+            'search'        => 'watchtower::partials.search',
+            'dashboard'     => 'watchtower::watchtower.index',
+            'adminlinks'    => 'watchtower::watchtower.links',
+            'unauthorized'  => 'watchtower::partials.unauthorized',
         ],
 
         'users' => [

@@ -2,8 +2,6 @@
 
 @section('content')
 
-  @if ( \Shinobi::can( config('watchtower.acl.user.role', false) ) )
-
   <h1>'{{ $user->name }}' Roles</h1>
   <hr/>
 
@@ -74,13 +72,5 @@
   </div>
 
   {!! Form::close() !!}
-
-  @else
-
-    <div class="alert alert-danger lead">
-      <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to sync user roles.
-    </div>
-
- @endif
 
 @endsection

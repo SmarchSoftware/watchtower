@@ -2,8 +2,6 @@
 
 @section('content')
 
-  @if ( \Shinobi::can( config('watchtower.acl.user.index', false) ) )
-
     <h1>Users
     <div class="btn-group pull-right" role="group" aria-label="...">    
       <a href="{{ route('watchtower.user.matrix') }}">
@@ -77,13 +75,5 @@
             </tbody>
         </table>
     </div>
-
-  @else
-
-    <div class="alert alert-danger lead">
-      <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to view user list.
-    </div>
-
-  @endif
 
 @endsection

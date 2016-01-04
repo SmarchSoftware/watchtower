@@ -2,8 +2,6 @@
 
 @section('content')
 
-  @if ( \Shinobi::can( config('watchtower.acl.user.viewmatrix', false) ) )
-
     <h1>User Matrix <small class="hidden-xs">Users that are on each role</small>
     </h1>
 

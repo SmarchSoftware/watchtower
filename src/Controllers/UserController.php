@@ -31,15 +31,19 @@ class UserController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		if ( $request->has('search_value') ) {
-			$value = $request->get('search_value');
-			$users = User::where('name', 'LIKE', '%'.$value.'%')
-				->orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
-		} else {
-			$users = User::orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
-		}
-		
-		return view( config('watchtower.views.users.index'), compact('users', 'value') );
+  		if ( Shinobi::can( config('watchtower.acl.user.index', false) ) ) {
+			if ( $request->has('search_value') ) {
+				$value = $request->get('search_value');
+				$users = User::where('name', 'LIKE', '%'.$value.'%')
+					->orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
+			} else {
+				$users = User::orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
+			}
+			
+			return view( config('watchtower.views.users.index'), compact('users', 'value') );
+	 	}
+
+	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'view user list' ]);
 	}
 
 	/**
@@ -49,7 +53,12 @@ class UserController extends Controller
 	 */
 	public function create()
 	{
-		return view( config('watchtower.views.users.create') );
+	 	if ( Shinobi::can( config('watchtower.acl.user.create', false) ) ) {
+			return view( config('watchtower.views.users.create') );
+	 	}
+
+	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'create new users' ]);
+
 	}
 
 	/**
@@ -80,9 +89,13 @@ class UserController extends Controller
 	 */
 	public function show($id)
 	{
-		$resource = User::findOrFail($id);
-		$show = "1";
-		return view( config('watchtower.views.users.show'), compact('resource','show') );
+  		if ( Shinobi::canAtLeast( [ config('watchtower.acl.user.show', false),  config('watchtower.acl.user.edit', false) ] ) ) {
+			$resource = User::findOrFail($id);
+			$show = "1";
+			return view( config('watchtower.views.users.show'), compact('resource','show') );
+	 	}
+
+	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'view users' ]);
 	}
 
 	/**
@@ -93,9 +106,13 @@ class UserController extends Controller
 	 */
 	public function edit($id)
 	{
-		$resource = User::findOrFail($id);
-		$show = "0";
-		return view( config('watchtower.views.users.edit'), compact('resource','show') );
+  		if ( Shinobi::canAtLeast( [ config('watchtower.acl.user.edit', false),  config('watchtower.acl.user.show', false) ] ) ) {
+			$resource = User::findOrFail($id);
+			$show = "0";
+			return view( config('watchtower.views.users.edit'), compact('resource','show') );
+	 	}
+
+	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'edit users' ]);
 	}
 
 	/**
@@ -149,15 +166,19 @@ class UserController extends Controller
 	 */
 	public function editUserRoles($id)
 	{
-		$user = User::findOrFail($id);
+  		if ( \Shinobi::can( config('watchtower.acl.user.role', false) ) ) {
+			$user = User::findOrFail($id);
 
-		$roles = $user->roles;
+			$roles = $user->roles;
 
-    	$available_roles = Role::whereDoesntHave('users', function ($query) use ($id) {
-		    $query->where('user_id', $id);
-		})->get();
+	    	$available_roles = Role::whereDoesntHave('users', function ($query) use ($id) {
+			    $query->where('user_id', $id);
+			})->get();
 
-		return view( config('watchtower.views.users.role'), compact('user', 'roles', 'available_roles') );
+			return view( config('watchtower.views.users.role'), compact('user', 'roles', 'available_roles') );
+		}
+
+	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'sync user roles' ]);
 	}
 
 	/**
@@ -192,16 +213,20 @@ class UserController extends Controller
 	 */
 	public function showUserMatrix()
 	{
-		$roles = Role::all();
-		$users = User::all();
-		$us = DB::table('role_user')->select('role_id as r_id','user_id as u_id')->get();
+  		if ( \Shinobi::can( config('watchtower.acl.user.viewmatrix', false) ) ) {
+			$roles = Role::all();
+			$users = User::all();
+			$us = DB::table('role_user')->select('role_id as r_id','user_id as u_id')->get();
 
-		$pivot = [];
-		foreach($us as $u) {
-			$pivot[] = $u->r_id.":".$u->u_id;
+			$pivot = [];
+			foreach($us as $u) {
+				$pivot[] = $u->r_id.":".$u->u_id;
+			}
+
+			return view( config('watchtower.views.users.usermatrix'), compact('roles','users','pivot') );
 		}
 
-		return view( config('watchtower.views.users.usermatrix'), compact('roles','users','pivot') );
+	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'sync user roles' ]);
 	}
 
 	/**

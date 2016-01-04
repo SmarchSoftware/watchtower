@@ -2,8 +2,6 @@
 
 @section('content')
 
-  @if ( \Shinobi::can( config('watchtower.acl.user.create', false) ) )
-
     <h1>Create New User</h1>
     <hr/>
 
@@ -48,13 +46,5 @@
     </div>
     
     {!! Form::close() !!}
-
-  @else
-
-    <div class="alert alert-danger lead">
-        <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to create new users.
-    </div>
-
-  @endif
 
 @endsection
