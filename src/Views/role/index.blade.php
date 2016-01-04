@@ -2,8 +2,6 @@
 
 @section('content')
 
-  @if ( \Shinobi::can( config('watchtower.acl.role.index', false) ) )
-
     <h1>Roles
     <div class="btn-group pull-right" role="group" aria-label="...">    
       <a href="{{ route('watchtower.role.matrix') }}">
@@ -65,12 +63,12 @@
                       </button></a>
 
                     @if ( \Shinobi::can( config('watchtower.acl.role.destroy', false)) )
-                    {!! Form::open(['method'=>'delete','route'=> ['watchtower.role.destroy',$item->id], 'style' => 'display:inline']) !!}
-                      <button type="submit" class="btn btn-danger btn-xs">
-                      <i class="fa fa-trash-o fa-lg"></i> 
-                      <span class="hidden-xs hidden-sm">Delete</span>
-                      </button>
-                    {!! Form::close() !!}
+                      {!! Form::open(['method'=>'delete','route'=> ['watchtower.role.destroy',$item->id], 'style' => 'display:inline']) !!}
+                        <button type="submit" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash-o fa-lg"></i> 
+                        <span class="hidden-xs hidden-sm">Delete</span>
+                        </button>
+                      {!! Form::close() !!}
                     @endif
                 </td>
                </tr>
@@ -87,13 +85,5 @@
             </tbody>
         </table>
     </div>
-
-  @else
-
-      <div class="alert alert-danger lead">
-        <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to view role list.
-      </div>
-
-  @endif
 
 @endsection

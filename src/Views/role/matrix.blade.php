@@ -2,8 +2,6 @@
 
 @section('content')
 
-  @if ( \Shinobi::can( config('watchtower.acl.role.viewmatrix', false) ) ) 
-
     <h1>Role Matrix <small class="hidden-xs">Permissions that are on each role</small>
     </h1>
 
@@ -71,13 +69,5 @@
       </div>
     @endif
   {!! Form::close() !!}
-
-  @else
-  
-      <div class="alert alert-danger lead">
-        <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to view role permissions matrix.
-      </div>
-
-  @endif
 
 @endsection
