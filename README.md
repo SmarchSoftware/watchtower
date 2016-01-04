@@ -1,5 +1,3 @@
-# :construction: :construction: Documentation Under Construction :construction: :construction:
-
 # The Watchtower
 
 A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffeinated/shinobi) RBAC authorization system for Laravel 5.
@@ -8,10 +6,10 @@ A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffe
 
 This page is intended for installation, please check out the wiki for more information about usage.
 
-:scroll: [Configuration Options](https://github.com/SmarchSoftware/watchtower/wiki/Configuration-Options)
-:key: [Permissions](https://github.com/SmarchSoftware/watchtower/wiki/Permissions)
-:busts_in_silhouette: [Roles](https://github.com/SmarchSoftware/watchtower/wiki/Roles)
-:bust_in_silhouette: [Users](https://github.com/SmarchSoftware/watchtower/wiki/Users)
+* :scroll: [Configuration Options](https://github.com/SmarchSoftware/watchtower/wiki/Configuration-Options)
+* :key: [Permissions](https://github.com/SmarchSoftware/watchtower/wiki/Permissions)
+* :busts_in_silhouette: [Roles](https://github.com/SmarchSoftware/watchtower/wiki/Roles)
+* :bust_in_silhouette: [Users](https://github.com/SmarchSoftware/watchtower/wiki/Users)
 
 ## Overview
 
