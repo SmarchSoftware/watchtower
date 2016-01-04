@@ -2,8 +2,6 @@
 
 @section('content')
 
-  @if ( \Shinobi::can( config('watchtower.acl.permission.index', false) ) )
-
     <h1>Permissions
     <div class="btn-group pull-right" role="group" aria-label="...">    
       <a href="{{ route('watchtower.role.matrix') }}">
@@ -75,12 +73,5 @@
             </tbody>
         </table>
     </div>
-
-  @else
-
-      <div class="alert alert-danger lead">
-        <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to view permission list.
-      </div>
-      
-  @endif
+    
 @endsection

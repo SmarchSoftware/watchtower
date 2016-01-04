@@ -33,10 +33,24 @@ class PermissionController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function index(Request $request)
+	public function index()
 	{
-		if ( $request->has('search_value') ) {
-			$value = $request->get('search_value');
+		if ( Shinobi::can( config('watchtower.acl.permission.index', false) ) ) {
+			$permissions = $this->getData();
+			
+			return view( config('watchtower.views.permissions.index'), compact('permissions', 'value') );
+	 	}
+
+	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'view permission list' ]);
+	}
+
+	/**
+	 * Returns paginated list of items, checks if filter used
+	 * @return array Permissions
+	 */
+	protected function getData() {
+		if ( \Request::has('search_value') ) {
+			$value = \Request::get('search_value');
 			$permissions = Permission::where('name', 'LIKE', '%'.$value.'%')
 				->orWhere('slug', 'LIKE', '%'.$value.'%')
 				->orWhere('description', 'LIKE', '%'.$value.'%')
@@ -44,8 +58,8 @@ class PermissionController extends Controller
 		} else {
 			$permissions = Permission::orderBy('name')->paginate( config('watchtower.pagination.permissions', 15) );	
 		}
-		
-		return view( config('watchtower.views.permissions.index'), compact('permissions', 'value') );
+
+		return $permissions;
 	}
 
 	/**
@@ -55,9 +69,13 @@ class PermissionController extends Controller
 	 */
 	public function create()
 	{
-		return view( config('watchtower.views.permissions.create') )
-					->with('route', $this->route)
-					->with('tbl', $this->table);
+		if ( Shinobi::can( config('watchtower.acl.permission.create', false) ) ) {
+			return view( config('watchtower.views.permissions.create') )
+						->with('route', $this->route)
+						->with('tbl', $this->table);
+		}
+
+		return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'create new permissions' ]);
 	}
 
 	/**
@@ -88,11 +106,15 @@ class PermissionController extends Controller
 	 */
 	public function show($id)
 	{
-		$resource = Permission::findOrFail($id);
-		$show = "1";
-		$route = $this->route;
+		if ( Shinobi::canAtLeast( [ config('watchtower.acl.permission.edit', false),  config('watchtower.acl.permission.show', false)] ) ) {
+			$resource = Permission::findOrFail($id);
+			$show = "1";
+			$route = $this->route;
 
-		return view( config('watchtower.views.permissions.show'), compact('resource','show','route') );
+			return view( config('watchtower.views.permissions.show'), compact('resource','show','route') );
+		}
+
+		return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'view permissions' ]);
 	}
 
 	/**
@@ -103,12 +125,16 @@ class PermissionController extends Controller
 	 */
 	public function edit($id)
 	{
-		$resource = Permission::findOrFail($id);
-		$show = "0";
-		$route = $this->route;
-		$tbl = $this->table;
+		if ( Shinobi::canAtLeast( [ config('watchtower.acl.permission.edit', false),  config('watchtower.acl.permission.show', false)] ) ) {
+			$resource = Permission::findOrFail($id);
+			$show = "0";
+			$route = $this->route;
+			$tbl = $this->table;
 
-		return view( config('watchtower.views.permissions.edit'), compact('resource','show','route', 'tbl') );
+			return view( config('watchtower.views.permissions.edit'), compact('resource','show','route', 'tbl') );
+		}
+
+		return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'edit permissions' ]);
 	}
 
 	/**
@@ -162,15 +188,19 @@ class PermissionController extends Controller
 	 */
 	public function editRole($id)
 	{
-		$permission = Permission::findOrFail($id);
+ 		if ( Shinobi::can( config('watchtower.acl.permission.role', false) ) ) {
+			$permission = Permission::findOrFail($id);
 
-		$roles = $permission->roles;
+			$roles = $permission->roles;
 
-    	$available_roles = Role::whereDoesntHave('permissions', function ($query) use ($id) {
-		    $query->where('permission_id', $id);
-		})->get();
+	    	$available_roles = Role::whereDoesntHave('permissions', function ($query) use ($id) {
+			    $query->where('permission_id', $id);
+			})->get();
 
-		return view( config('watchtower.views.permissions.role'), compact('permission', 'roles', 'available_roles') );
+			return view( config('watchtower.views.permissions.role'), compact('permission', 'roles', 'available_roles') );
+	 	}
+
+	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'sync permission roles' ]);
 	}
 
 	/**

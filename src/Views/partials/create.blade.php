@@ -2,8 +2,6 @@
 
 @section('content')
 
-  @if ( \Shinobi::can( config('watchtower.acl.'.$route.'.create', false) ) )
-
     <h1>Create New {{ $route }}</h1>
     <hr/>
 
@@ -50,13 +48,5 @@
         </div>    
     </div>
     {!! Form::close() !!}
-
-  @else
-
-      <div class="alert alert-danger lead">
-        <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to create new {{$route}}s.
-      </div>
-
-    @endif
 
 @endsection

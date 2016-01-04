@@ -2,8 +2,6 @@
 
 @section('content')
 
-  @if ( \Shinobi::can( config('watchtower.acl.permission.role', false) ) )
-
   <h1>'{{ $permission->name }}' Roles</h1>
   <hr/>
 
@@ -73,13 +71,5 @@
         </div>    
     </div>
   {!! Form::close() !!}
-
-  @else
-
-      <div class="alert alert-danger lead">
-        <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to sync permission roles.
-      </div>
-
-  @endif
 
 @endsection

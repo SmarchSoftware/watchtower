@@ -2,8 +2,6 @@
 
 @section('content')
 
-  @if ( \Shinobi::canAtLeast( [ config('watchtower.acl.'.$route.'.edit', false),  config('watchtower.acl.'.$route.'.show', false)] ) )
-
     <h1>Edit '{{ $resource->name }}'</h1>
     <hr/>
 
@@ -86,13 +84,5 @@
      </div>        
     @endif
     {!! Form::close() !!}
-
-  @else
-
-      <div class="alert alert-danger lead">
-        <i class="fa fa-exclamation-triangle fa-1x"></i> You are not permitted to {{ ( ($show == '0') ? 'edit' : 'view' ) }} {{$route}}s.
-      </div>
-
-  @endif
 
 @endsection
