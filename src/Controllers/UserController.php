@@ -36,11 +36,13 @@ class UserController extends Controller
 				$value = $request->get('search_value');
 				$users = User::where('name', 'LIKE', '%'.$value.'%')
 					->orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
+				session()->flash('search_value', $value);
 			} else {
 				$users = User::orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
+				session()->forget('search_value');	
 			}
 			
-			return view( config('watchtower.views.users.index'), compact('users', 'value') );
+			return view( config('watchtower.views.users.index'), compact('users') );
 	 	}
 
 	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'view user list' ]);

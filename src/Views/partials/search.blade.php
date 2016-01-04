@@ -9,8 +9,8 @@
     </div>
     <div class="text-muted">
       <em>Found {{ $items->total() }} {{ str_plural('record', $items->count() ) }}.
-      @if (isset($value))
-        Filter : "{{ $value }}" <a href="{{ route( $search_route ) }}">[ Clear Filter ]</a>
+      @if (session()->has('search_value'))
+        Filter : "{{ session('search_value') }}" <a href="{{ route( $search_route ) }}">[ Clear Filter ]</a>
       @endif
       </em>
     </div>

@@ -39,7 +39,7 @@ class RoleController extends Controller
 		if ( Shinobi::can( config('watchtower.acl.role.index', false) ) ) {
 			$roles = $this->getData();
 
-			return view( config('watchtower.views.roles.index'), compact('roles', 'value') );
+			return view( config('watchtower.views.roles.index'), compact('roles') );
 	 	}
 
 	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'view role list' ]);
@@ -56,8 +56,10 @@ class RoleController extends Controller
 				->orWhere('slug', 'LIKE', '%'.$value.'%')
 				->orWhere('description', 'LIKE', '%'.$value.'%')
 				->orderBy('name')->paginate( config('watchtower.pagination.roles', 15) );
+			session()->flash('search_value', $value);
 		} else {
-			$roles = Role::orderBy('name')->paginate( config('watchtower.pagination.roles', 15) );	
+			$roles = Role::orderBy('name')->paginate( config('watchtower.pagination.roles', 15) );
+			session()->forget('search_value');	
 		}
 
 		return $roles;

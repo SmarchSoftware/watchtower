@@ -38,7 +38,7 @@ class PermissionController extends Controller
 		if ( Shinobi::can( config('watchtower.acl.permission.index', false) ) ) {
 			$permissions = $this->getData();
 			
-			return view( config('watchtower.views.permissions.index'), compact('permissions', 'value') );
+			return view( config('watchtower.views.permissions.index'), compact('permissions') );
 	 	}
 
 	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'view permission list' ]);
@@ -55,8 +55,10 @@ class PermissionController extends Controller
 				->orWhere('slug', 'LIKE', '%'.$value.'%')
 				->orWhere('description', 'LIKE', '%'.$value.'%')
 				->orderBy('name')->paginate( config('watchtower.pagination.permissions', 15) );
+			session()->flash('search_value', $value);
 		} else {
-			$permissions = Permission::orderBy('name')->paginate( config('watchtower.pagination.permissions', 15) );	
+			$permissions = Permission::orderBy('name')->paginate( config('watchtower.pagination.permissions', 15) );
+			session()->forget('search_value');		
 		}
 
 		return $permissions;
