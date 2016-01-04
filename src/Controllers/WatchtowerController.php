@@ -16,9 +16,13 @@ class WatchtowerController extends Controller
      */
     public function index()
     {
-        $links = config('watchtower.dashboard');
-        return view('watchtower::watchtower.index')
-                ->with('dashboard', $links)
-                ->with('title', config('watchtower.site_title') );
+        if ( \Shinobi::can( config('watchtower.acl.watchtower.index', false) ) ) {
+            $links = config('watchtower.dashboard');
+            return view('watchtower::watchtower.index')
+                    ->with('dashboard', $links)
+                    ->with('title', config('watchtower.site_title') );
+        }
+
+        return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'view the dashboard' ]);
     }
 }
