@@ -173,11 +173,15 @@ class UserController extends Controller
 
 			$roles = $user->roles;
 
+			foreach ($roles as $role) {
+				$permissions[$role->name] = $role->permissions;
+			}
+
 	    	$available_roles = Role::whereDoesntHave('users', function ($query) use ($id) {
 			    $query->where('user_id', $id);
 			})->get();
 
-			return view( config('watchtower.views.users.role'), compact('user', 'roles', 'available_roles') );
+			return view( config('watchtower.views.users.role'), compact('user', 'roles', 'available_roles', 'permissions') );
 		}
 
 	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'sync user roles' ]);

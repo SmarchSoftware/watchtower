@@ -64,7 +64,6 @@
     </div>
   </div>
 
-
    <div class="form-group">
       <div class="col-sm-3">
           {!! Form::submit('Update Roles', ['class' => 'btn btn-primary form-control']) !!}
@@ -72,5 +71,31 @@
   </div>
 
   {!! Form::close() !!}
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="panel panel-info">
+        <div class="panel-heading clearfix">
+          <i class="icon-calendar"></i>
+          <h2 class="panel-title">{{$user->name}}'s Permissions (from current roles)</small></h2>
+        </div>
+        
+        <div class="panel-body">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <ul class="list-unstyled">
+              @foreach($permissions as $prole => $perm)
+              <li><strong>{{$prole}}</strong></li>
+                <ul>
+                @foreach($perm as $p)      
+                  <li>{{$p->name}} <em>({{ $p->slug }})</em></li>
+                @endforeach
+                </ul>
+              @endforeach
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection
