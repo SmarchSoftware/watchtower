@@ -39,17 +39,21 @@
                 </td>
                 
                 <td>
+                    @if ( Shinobi::can( config('watchtower.acl.user.role', false)) )
                     <a href="{{ route('watchtower.user.role.edit', $item->id) }}">
                       <button type="button" class="btn btn-primary btn-xs">
                       <i class="fa fa-users fa-fw"></i> 
                       <span class="hidden-xs hidden-sm">Roles</span>
                       </button></a>
+                    @endif
 
+                    @if ( Shinobi::can( config('watchtower.acl.user.edit', false)) )
                     <a href="{{ route('watchtower.user.edit', $item->id) }}">
                       <button type="button" class="btn btn-default btn-xs">
                       <i class="fa fa-pencil fa-fw"></i> 
                       <span class="hidden-xs hidden-sm">Update</span>
                       </button></a>
+                    @endif
 
 
                     @if ( Shinobi::can( config('watchtower.acl.user.destroy', false)) )

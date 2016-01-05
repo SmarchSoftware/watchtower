@@ -43,17 +43,22 @@
                 </td>
                 
                 <td>
+                    @if ( Shinobi::can( config('watchtower.acl.permission.role', false)) )
                     <a href="{{ route('watchtower.permission.role.edit', $item->id) }}">
                       <button type="button" class="btn btn-primary btn-xs">
                       <i class="fa fa-users fa-fw"></i> 
                       <span class="hidden-xs hidden-sm">Roles</span>
                       </button></a>
+                    @endif
 
+                    @if ( Shinobi::can( config('watchtower.acl.permission.edit', false)) )
                     <a href="{{ route('watchtower.permission.edit', $item->id) }}">
                       <button type="button" class="btn btn-default btn-xs">
                       <i class="fa fa-pencil fa-fw"></i> 
                       <span class="hidden-xs hidden-sm">Update</span>
                       </button></a>
+                    @endif
+                    
                     @if ( Shinobi::can( config('watchtower.acl.permission.destroy', false) ) )
                     {!! Form::open(['method'=>'delete','route'=> ['watchtower.permission.destroy',$item->id], 'style' => 'display:inline']) !!}
                       <button type="submit" class="btn btn-danger btn-xs">
