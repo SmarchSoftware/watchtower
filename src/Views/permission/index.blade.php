@@ -34,7 +34,7 @@
             </thead>
 
             <tbody>
-              @foreach($permissions as $item)
+              @forelse($permissions as $item)
                <tr>
                 <td>{{ $item->id }}</td>
                 
@@ -69,7 +69,9 @@
                     @endif
                 </td>
                </tr>
-              @endforeach
+              @empty
+                <tr><td>There are no permissions</td></tr>
+              @endforelse
 
               <!-- pagination -->
               <tfoot>

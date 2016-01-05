@@ -106,9 +106,11 @@
     						
     						<li role="separator" class="divider"></li>
     						<li class="text-muted text-center"><i class="fa fa-users"></i> Your Roles</li>
-							@foreach(Auth::user()->roles as $role)
+							@forelse(Auth::user()->roles as $role)
 								<li><a href="{{ route('watchtower.role.permission.edit', $role->id) }}"><i class="fa fa-users fa-xs"></i> {{ $role->name }}</a></li>
-							@endforeach
+							@empty
+								<li><a href="#"><i class="fa fa-banned fa-xs"></i> No roles</a></li>
+							@endforelse
     						
     						<li role="separator" class="divider"></li>
 				            <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-fw fa-sign-out"></i> Logout</a></li>

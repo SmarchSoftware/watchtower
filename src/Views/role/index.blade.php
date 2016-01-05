@@ -34,7 +34,7 @@
             </thead>
 
             <tbody>
-              @foreach($roles as $item)
+              @forelse($roles as $item)
                <tr>
                 <td>{{ $item->id }}</td>
                 
@@ -82,7 +82,9 @@
                     @endif
                 </td>
                </tr>
-              @endforeach
+              @empty
+                <tr><td>There are no roles</td></tr>
+              @endforelse
 
               <!-- pagination -->
               <tfoot>

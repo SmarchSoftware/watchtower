@@ -30,7 +30,7 @@
             </thead>
 
             <tbody>
-              @foreach($users as $item)
+              @forelse($users as $item)
                <tr>
                 <td>{{ $item->id }}</td>
                 
@@ -66,7 +66,9 @@
                     @endif
                 </td>
                </tr>
-              @endforeach
+              @empty
+                <tr><td>There are no users</td></tr>
+              @endforelse
 
               <!-- pagination -->
               <tfoot>
