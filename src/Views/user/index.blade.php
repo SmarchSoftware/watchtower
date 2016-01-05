@@ -52,7 +52,7 @@
                       </button></a>
 
 
-                    @if ( \Shinobi::can( config('watchtower.acl.user.destroy', false)) )
+                    @if ( Shinobi::can( config('watchtower.acl.user.destroy', false)) )
                     {!! Form::open(['method'=>'delete','route'=> ['watchtower.user.destroy',$item->id], 'style' => 'display:inline']) !!}
                       <button type="submit" class="btn btn-danger btn-xs">
                       <i class="fa fa-trash-o fa-lg"></i> 

@@ -66,7 +66,7 @@
                       <span class="hidden-xs hidden-sm">Update</span>
                       </button></a>
 
-                    @if ( \Shinobi::can( config('watchtower.acl.role.destroy', false)) )
+                    @if ( Shinobi::can( config('watchtower.acl.role.destroy', false)) )
                       {!! Form::open(['method'=>'delete','route'=> ['watchtower.role.destroy',$item->id], 'style' => 'display:inline']) !!}
                         <button type="submit" class="btn btn-danger btn-xs">
                         <i class="fa fa-trash-o fa-lg"></i> 

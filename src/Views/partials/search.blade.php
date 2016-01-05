@@ -1,4 +1,4 @@
-    @if ( \Shinobi::can( config('watchtower.acl.'.$acl.'.search', false)) )
+    @if ( Shinobi::can( config('watchtower.acl.'.$acl.'.search', false)) )
     <!-- search bar -->    
     {!! Form::open(['method'=>'get','route'=> [ $search_route ], 'style' => 'display:inline']) !!}
     <div class="input-group">

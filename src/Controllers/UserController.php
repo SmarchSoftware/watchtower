@@ -168,7 +168,7 @@ class UserController extends Controller
 	 */
 	public function editUserRoles($id)
 	{
-  		if ( \Shinobi::can( config('watchtower.acl.user.role', false) ) ) {
+  		if ( Shinobi::can( config('watchtower.acl.user.role', false) ) ) {
 			$user = User::findOrFail($id);
 
 			$roles = $user->roles;
@@ -215,7 +215,7 @@ class UserController extends Controller
 	 */
 	public function showUserMatrix()
 	{
-  		if ( \Shinobi::can( config('watchtower.acl.user.viewmatrix', false) ) ) {
+  		if ( Shinobi::can( config('watchtower.acl.user.viewmatrix', false) ) ) {
 			$roles = Role::all();
 			$users = User::all();
 			$us = DB::table('role_user')->select('role_id as r_id','user_id as u_id')->get();

@@ -42,7 +42,7 @@
           </div>
       </div>
       
-      @if ( \Shinobi::can( config('watchtower.acl.user.edit', false) ) ) 
+      @if ( Shinobi::can( config('watchtower.acl.user.edit', false) ) ) 
 
        <div class="form-group">
          <div class="col-sm-offset-3 col-sm-3">

@@ -54,7 +54,7 @@
                       <i class="fa fa-pencil fa-fw"></i> 
                       <span class="hidden-xs hidden-sm">Update</span>
                       </button></a>
-                    @if ( \Shinobi::can( config('watchtower.acl.permission.destroy', false) ) )
+                    @if ( Shinobi::can( config('watchtower.acl.permission.destroy', false) ) )
                     {!! Form::open(['method'=>'delete','route'=> ['watchtower.permission.destroy',$item->id], 'style' => 'display:inline']) !!}
                       <button type="submit" class="btn btn-danger btn-xs">
                       <i class="fa fa-trash-o fa-lg"></i> 

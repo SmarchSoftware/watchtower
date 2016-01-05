@@ -43,7 +43,7 @@
     @endif
     
     @if ($show == '0')
-      @if ( \Shinobi::can( config('watchtower.acl.'.$route.'.edit', false) ) ) 
+      @if ( Shinobi::can( config('watchtower.acl.'.$route.'.edit', false) ) ) 
          <div class="form-group">
              <div class="col-sm-offset-3 col-sm-3">
                  {!! Form::hidden('tbl', $tbl) !!}
