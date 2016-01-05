@@ -109,7 +109,7 @@
 							@forelse(Auth::user()->roles as $role)
 								<li><a href="{{ route('watchtower.role.permission.edit', $role->id) }}"><i class="fa fa-users fa-xs"></i> {{ $role->name }}</a></li>
 							@empty
-								<li><a href="#"><i class="fa fa-banned fa-xs"></i> No roles</a></li>
+								<li><a href="#"><i class="fa fa-hand-stop-o fa-xs"></i> No roles</a></li>
 							@endforelse
     						
     						<li role="separator" class="divider"></li>
