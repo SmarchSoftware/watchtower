@@ -182,6 +182,13 @@
 		 */
 		$('div.alert').not('div.alert-danger').delay(4000).slideUp();
 
+		/**
+		 * To use the bootstrap tooltip popups.
+		 */
+  		$('[data-toggle="tooltip"]').tooltip({
+  			container: 'body',
+  			trigger:'click hover focus'
+  		});
 
 		/*!
 		 * For Delete Modal prompts
