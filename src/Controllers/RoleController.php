@@ -24,7 +24,8 @@ class RoleController extends Controller
 	/**
 	 * Set resource in constructor.
 	 */
-	function __construct() {
+	function __construct()
+	{
 		$this->route = "role";
 		$this->table = "roles";
 	}
@@ -49,7 +50,8 @@ class RoleController extends Controller
 	 * Returns paginated list of items, checks if filter used
 	 * @return array Permissions
 	 */
-	protected function getData() {
+	protected function getData()
+	{
 		if ( \Request::has('search_value') ) {
 			$value = \Request::get('search_value');
 			$roles = Role::where('name', 'LIKE', '%'.$value.'%')

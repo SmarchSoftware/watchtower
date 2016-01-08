@@ -48,7 +48,8 @@ class PermissionController extends Controller
 	 * Returns paginated list of items, checks if filter used
 	 * @return array Permissions
 	 */
-	protected function getData() {
+	protected function getData()
+	{
 		if ( \Request::has('search_value') ) {
 			$value = \Request::get('search_value');
 			$permissions = Permission::where('name', 'LIKE', '%'.$value.'%')
