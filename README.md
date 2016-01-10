@@ -38,7 +38,6 @@ Depending on whether or not you have already installed Shinobi, your install is 
 #### :black_square_button: Composer
 
     composer require smarch/watchtower
-> :construction: not yet able, haven't marked it as stable yet. Use `"smarch/watchtower": "dev-master"` in your composer.json while this is in alpha.
 
 #### :pencil: Service Provider
 
