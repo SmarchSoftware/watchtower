@@ -130,7 +130,11 @@ class UserController extends Controller
 
 		if ( Shinobi::can ( config('watchtower.acl.user.edit', false) ) ) {
 			$user = User::findOrFail($id);
-			$user->update($request->all());
+			if ($request->get('password') == '') {
+        		$user->update( $request->except('password') );
+    		} else {
+        		$user->update( $request->all() );
+    		}
 			$level = "success";
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! User edited.";
 		}
