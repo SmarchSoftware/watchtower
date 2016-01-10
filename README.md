@@ -2,8 +2,6 @@
 
 A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffeinated/shinobi) RBAC authorization system for Laravel **5.1**.
 
-> #### :no_entry_sign: **NOT YET COMPATIBLE WITH LARAVEL 5.2.** :no_entry_sign:
-
 ![enter image description here](http://i.imgur.com/zYBjWsF.png)
 
 This page is intended for installation, please check out the wiki for more information about usage.
