@@ -117,8 +117,5 @@ Once this is all finished, you should be able to go to
 
  and be rewarded with a big ole warning. :smile: That's normal. This shows you that Shinobi is working and properly protecting your admin *(Watchtower)* area. Just login with admin@change.me and password *(if you used the db:seed command)* and you will have full access. If you already had a user in your database, log in with that first user to enable access. `By default, the db:seed command will associate the admin role with `user->id = 1` in the database.`
 
-### Laravel 5.2 Updates
-* They introduced a breaking change. All auth sessions are stored in a group now so you will need to manually edit the smarch\watchtower\src\routes.php to wrap the Watchtower routes into the web group. <kbd>Route::group(['middleware' => ['web']], function () {</kbd> and don't forget the <kbd>});</kbd> at the end.
-
 #### :trident: Why "Watchtower"?
 I've been a DC geek for over 30 years now. Watchtower is the name of the floating spacestation the Justice League used to monitor / administer the super heroes. ....coulda been worse. I was thinking of going with OMAC for a while. :smile:
