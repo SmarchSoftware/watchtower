@@ -1,6 +1,6 @@
 # The Watchtower
 
-A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffeinated/shinobi) RBAC authorization system for Laravel **5.1**.
+A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffeinated/shinobi) RBAC authorization system for Laravel **5**.
 
 ![enter image description here](http://i.imgur.com/zYBjWsF.png)
 
@@ -29,7 +29,7 @@ Out of the box, Watchtower contains all the views necessary to enable Role & Per
 
 ## Installation
 
-#### Intalling on LARAVEL 5.2? USE THE FEATURE/Laravel5.2 branch _(or tag 1.0.1)_
+#### Installing on LARAVEL 5.2? USE THE FEATURE/Laravel5.2 branch _(or tag 1.0.1)_
 
 Depending on whether or not you have already installed Shinobi, your install is pretty straightforward. Install Watchtower, add Service Providers, add Facade, run DB commands. Win.
 
@@ -40,7 +40,7 @@ Depending on whether or not you have already installed Shinobi, your install is 
 
 #### :black_square_button: Composer
 
-    composer require smarch/watchtower
+    composer require "smarch/watchtower:1.0.0"
 
 #### :pencil: Service Provider
 
