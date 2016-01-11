@@ -28,6 +28,9 @@ Out of the box, Watchtower contains all the views necessary to enable Role & Per
 
 
 ## Installation
+
+#### Intalling on LARAVEL 5.2? USE THE FEATURE/Laravel5.2 branch _(or tag 1.0.1)_
+
 Depending on whether or not you have already installed Shinobi, your install is pretty straightforward. Install Watchtower, add Service Providers, add Facade, run DB commands. Win.
 
 > :hand: ***Note***
@@ -107,9 +110,10 @@ Once this is all finished, you should be able to go to
 > :hand: **Note** If you have not setup a login redirect yet, and don't have a HOME route and view, you will probably get another route error. Create a route for Home or [redirect your logins](http://laravel.com/docs/5.1/authentication#included-authenticating) or just type the url of http://yoursite/watchtower again. 
 
 ### Laravel 5.2 Updates
-* They introduced a breaking change. All auth sessions are stored in a group now so you will need to manually edit the smarch\watchtower\src\routes.php to wrap the Watchtower routes into the web group. <kbd>Route::group(['middleware' => ['web']], function () {</kbd> and don't forget the <kbd>});</kbd> at the end. I will push out a "Laravel 5.2" version of the package soon that does this already.
-* The Shinobi package needs an update to make it 5.2 compatible. In the meantime, you can edit the ShinobiTrait.php file to pass in arguments array to the can method. (On lines 132, 145 and 207 of ShinobiTrait.php)
-* You can ignore all the Laravel Authentication stuff in the following paragraph. Now you can use artisan to make all your auth views and routes. They dropped the "auth/" prefix so I will update the layout in the 5.2 verison to reflect the new path to login and logout.
+* They introduced a breaking change. All auth sessions are stored in a group now so you will need to manually edit the smarch\watchtower\src\routes.php to wrap the Watchtower routes into the web group. <kbd>Route::group(['middleware' => ['web']], function () {</kbd> and don't forget the <kbd>});</kbd> at the end. I have updated the Laravel 5.2 version of this package to reflect this change already.
+* You can ignore all the Laravel Authentication stuff in the following paragraph. Now you can use artisan to make all your auth views and routes. They dropped the "auth/" prefix so I have updated the layout in the 5.2 verison to reflect the new path to login and logout.
+* The Shinobi package needs an update to make it 5.2 compatible. In the meantime, you can edit the ShinobiTrait.php file to pass in an $arguments array to the can method(s). _(On lines 132 of ShinobiTrait.php add "$arguments = []" to the can() method, and on lines 145 and 207 of ShinobiTrait.php add "$arguments" to the can() method call.)_
+
 
 #### :exclamation: Laravel Authentication Views (login, etc...)
 Watchtower does not ship enabled _(see note below after routes)_ with the default laravel authentication views/routes, since Laravel removed them in 5.1. However you can find some samples / information from Laravel here : [Laravel Login / Auth Views](http://laravel.com/docs/5.1/authentication#authentication-quickstart) that will provide you with the routes / views necessary to permit login and registration.
