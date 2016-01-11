@@ -1,6 +1,6 @@
 # The Watchtower
 
-A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffeinated/shinobi) RBAC authorization system for Laravel **5.1**.
+A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffeinated/shinobi) RBAC authorization system for Laravel **5**.
 
 ![enter image description here](http://i.imgur.com/zYBjWsF.png)
 
@@ -28,6 +28,9 @@ Out of the box, Watchtower contains all the views necessary to enable Role & Per
 
 
 ## Installation
+
+#### Installing on LARAVEL 5.1? USE THE master branch _(or tag 1.0.0)_
+
 Depending on whether or not you have already installed Shinobi, your install is pretty straightforward. Install Watchtower, add Service Providers, add Facade, run DB commands. Win.
 
 > :hand: ***Note***
@@ -37,7 +40,7 @@ Depending on whether or not you have already installed Shinobi, your install is 
 
 #### :black_square_button: Composer
 
-    composer require smarch/watchtower
+    composer require "smarch/watchtower:1.0.1"
 
 #### :pencil: Service Provider
 
@@ -65,8 +68,14 @@ While Watchtower itself does not need a facade, one is provided if you wish to u
         //'Watchtower'=> Smarch\Watchtower\WatchtowerFacade::class, // not required
         'Shinobi'  => Caffeinated\Shinobi\Facades\Shinobi::class, // For RBAC functions
 
-#### :card_index: Database Migrations / Seeds
+#### :lock: Authentication
+By default, Laravel does not ship with Authentication set up. But you CAN set it up and make it available really easily using laravel's built in artisan command.
 
+    php artisan auth:make
+   
+This will create all the views you need, the logic you need, and set up the routes you need to allow your users to login / logout / register / reset password.
+
+#### :card_index: Database Migrations / Seeds
 If you did not install Shinobi earlier, you will need to run the migration files to properly set up and create the necessary tables. From your command prompt (wherever you run your artisan commands) enter the following command <kbd>php artisan vendor:publish</kbd> and then <kbd>php artisan migrate</kbd>. This should properly create your necessary tables AND create the Watchtower config file *(which allows you to define any views / permissions you wish to change from their defaults)*.
 
     php artisan vendor:publish
@@ -84,18 +93,22 @@ If you are installing Shinobi now, with Watchtower, you will need to also make t
     namespace App;
     
     use Caffeinated\Shinobi\Traits\ShinobiTrait; // <-- Add this for Shinobi
-    ...
-    // comment out the following line to stop Laravel's Gate Authorization
-    //use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-    ...
     
-    class User extends Model implements AuthenticatableContract,
-                                       // AuthorizableContract,//<-- Commentout
-                                        CanResetPasswordContract
+    use Illuminate\Foundation\Auth\User as Authenticatable;
+    
+    class User extends Authenticatable
     {
-	    // use ShinobiTrait instead of Authorizable
-        use Authenticatable, CanResetPassword, ShinobiTrait; //Authorizable
+        use ShinobiTrait;
         ...
+
+> :construction:
+> Until Shinobi is updated, you will need to go to the ShinobiTrait.php file and make the following changes - 
+> * Line 132 change <kbd>public function can($permission)</kbd> to <kbd>public function can($permission, $arguments = [])</kbd>
+> * Line 145 change <kbd>if ($role->can($permission)) {</kbd> to <kbd>if ($role->can($permission, $arguments)) {</kbd>
+> * Line 207 change <kbd>return $this->can($permission);</kbd> to <kbd>return $this->can($permission, $arguments);</kbd>
+> I will remove this construction section once Shinobi has its update...
+>
+> :construction:
 
 Once this is all finished, you should be able to go to
 
@@ -103,38 +116,9 @@ Once this is all finished, you should be able to go to
 ![](http://i.imgur.com/ou6oses.png)
 
  and be rewarded with a big ole warning. :smile: That's normal. This shows you that Shinobi is working and properly protecting your admin *(Watchtower)* area. Just login with admin@change.me and password *(if you used the db:seed command)* and you will have full access. If you already had a user in your database, log in with that first user to enable access. `By default, the db:seed command will associate the admin role with `user->id = 1` in the database.`
- 
-> :hand: **Note** If you have not setup a login redirect yet, and don't have a HOME route and view, you will probably get another route error. Create a route for Home or [redirect your logins](http://laravel.com/docs/5.1/authentication#included-authenticating) or just type the url of http://yoursite/watchtower again. 
 
 ### Laravel 5.2 Updates
-* They introduced a breaking change. All auth sessions are stored in a group now so you will need to manually edit the smarch\watchtower\src\routes.php to wrap the Watchtower routes into the web group. <kbd>Route::group(['middleware' => ['web']], function () {</kbd> and don't forget the <kbd>});</kbd> at the end. I will push out a "Laravel 5.2" version of the package soon that does this already.
-* The Shinobi package needs an update to make it 5.2 compatible. In the meantime, you can edit the ShinobiTrait.php file to pass in arguments array to the can method. (On lines 132, 145 and 207 of ShinobiTrait.php)
-* You can ignore all the Laravel Authentication stuff in the following paragraph. Now you can use artisan to make all your auth views and routes. They dropped the "auth/" prefix so I will update the layout in the 5.2 verison to reflect the new path to login and logout.
-
-#### :exclamation: Laravel Authentication Views (login, etc...)
-Watchtower does not ship enabled _(see note below after routes)_ with the default laravel authentication views/routes, since Laravel removed them in 5.1. However you can find some samples / information from Laravel here : [Laravel Login / Auth Views](http://laravel.com/docs/5.1/authentication#authentication-quickstart) that will provide you with the routes / views necessary to permit login and registration.
-
-You will need the following routes for authentication. (also provided on Laravel auth link above)
-
-	routes.php 
-	// Authentication routes...
-	Route::get('auth/login', 'Auth\AuthController@getLogin');
-	Route::post('auth/login', 'Auth\AuthController@postLogin');
-	Route::get('auth/logout', 'Auth\AuthController@getLogout');
-	
-	// Registration routes...
-	Route::get('auth/register', 'Auth\AuthController@getRegister');
-	Route::post('auth/register', 'Auth\AuthController@postRegister');
-	
-	// Password reset link request routes...
-	Route::get('password/email', 'Auth\PasswordController@getEmail');
-	Route::post('password/email', 'Auth\PasswordController@postEmail');
-	
-	// Password reset routes...
-	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-	Route::post('password/reset', 'Auth\PasswordController@postReset');
-
-> :hand: **Note** As a convenience, the default Laravel auth views are included with watchtower in the "smarch\watchtower\Views\auth" folder. Simply copy and paste these to your "root\resources\views" folder to enable them.
+* They introduced a breaking change. All auth sessions are stored in a group now so you will need to manually edit the smarch\watchtower\src\routes.php to wrap the Watchtower routes into the web group. <kbd>Route::group(['middleware' => ['web']], function () {</kbd> and don't forget the <kbd>});</kbd> at the end.
 
 #### :trident: Why "Watchtower"?
 I've been a DC geek for over 30 years now. Watchtower is the name of the floating spacestation the Justice League used to monitor / administer the super heroes. ....coulda been worse. I was thinking of going with OMAC for a while. :smile:
