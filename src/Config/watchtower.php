@@ -180,21 +180,36 @@ return [
             'name'  => "Users",            
             'route' => 'watchtower.user.index',
             'icon'  => 'fa fa-user fa-5x',
-            'colour'=> 'primary'
+            'colour'=> 'primary',
+            'nav'   => [
+                'title' => '',
+                'icon'  => '',
+                'route' => ''
+            ]
         ],
 
         'roles' => [
             'name'  => "Roles",
             'route' => 'watchtower.role.index',
             'icon'  => 'fa fa-users fa-5x',
-            'colour'=> 'info'
+            'colour'=> 'info',
+            'nav'   => [
+                'title' => '',
+                'icon'  => '',
+                'route' => ''
+            ]
         ],
 
         'permissions' => [
             'name'  => "Permissions",
             'route' => 'watchtower.permission.index',
             'icon'  => 'fa fa-5x fa-key',
-            'colour'=> 'success'
+            'colour'=> 'success',
+            'nav'   => [
+                'title' => '',
+                'icon'  => '',
+                'route' => ''
+            ]
         ],
     ],
 
