@@ -112,7 +112,6 @@ Once this is all finished, you should be able to go to
 ### Laravel 5.2 Updates
 * They introduced a breaking change. All auth sessions are stored in a group now so you will need to manually edit the smarch\watchtower\src\routes.php to wrap the Watchtower routes into the web group. <kbd>Route::group(['middleware' => ['web']], function () {</kbd> and don't forget the <kbd>});</kbd> at the end. I have updated the Laravel 5.2 version of this package to reflect this change already.
 * You can ignore all the Laravel Authentication stuff in the following paragraph. Now you can use artisan to make all your auth views and routes. They dropped the "auth/" prefix so I have updated the layout in the 5.2 verison to reflect the new path to login and logout.
-* The Shinobi package needs an update to make it 5.2 compatible. In the meantime, you can edit the ShinobiTrait.php file to pass in an $arguments array to the can method(s). _(On lines 132 of ShinobiTrait.php add "$arguments = []" to the can() method, and on lines 145 and 207 of ShinobiTrait.php add "$arguments" to the can() method call.)_
 
 
 #### :exclamation: Laravel Authentication Views (login, etc...)
