@@ -30,7 +30,6 @@ class WatchtowerServiceProvider extends ServiceProvider
 
         // Merge config files
         $this->mergeConfigFrom(__DIR__.'/Config/Watchtower.php','watchtower');
-
     }
 
     /**
@@ -40,9 +39,15 @@ class WatchtowerServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Grab appropriate routes file for version.
+        $routes_file = __DIR__.'/routes.php';
+        if ( str_contains( app()->version(), '5.2.' ) ){
+            $routes_file = __DIR__.'/5.2_routes.php';
+        } 
+
         // load our routes
         if (! $this->app->routesAreCached()) {
-            require __DIR__.'/routes.php';
+            require $routes_file;
         }
 
         // View Composer

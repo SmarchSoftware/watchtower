@@ -8,7 +8,7 @@
     {!! Form::model($resource, ['method' => 'PATCH', 'route' => [ 'watchtower.'.$route.'.update', $resource->id ], 'class' => 'form-horizontal']) !!}
     {!! Form::hidden('id', $resource->id) !!}
 
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
         {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
         {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -16,7 +16,7 @@
         {!! $errors->first('name', '<div class="col-sm-6 col-sm-offset-3 text-danger">:message</div>') !!}
     </div>
 
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('slug') ? 'has-error' : ''}}">
         {!! Form::label('slug', 'Slug: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
             {!! Form::text('slug', null, ['class' => 'form-control']) !!}
@@ -24,7 +24,7 @@
         {!! $errors->first('slug', '<div class="col-sm-6 col-sm-offset-3 text-danger">:message</div>') !!}
     </div>
 
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
         {!! Form::label('description', 'Description: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
             {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
