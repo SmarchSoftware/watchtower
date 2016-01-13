@@ -90,25 +90,21 @@ To permit the ability to restrict and permit access to the various admin areas o
 #### :memo: Shinobi usage requirements
 If you are installing Shinobi now, with Watchtower, you will need to also make the following changes so that you can use Shinobi's RBAC functions instead of Laravel defaulting to its own "Gate" authorization methods. Modify your User model to reflect the following changes : 
 
+    <?php
     namespace App;
-    
-    use Caffeinated\Shinobi\Traits\ShinobiTrait; // <-- Add this for Shinobi
-    
-    use Illuminate\Foundation\Auth\User as Authenticatable;
-    
-    class User extends Authenticatable
-    {
-        use ShinobiTrait;
-        ...
 
-> :construction:
-> Until Shinobi is updated, you will need to go to the ShinobiTrait.php file and make the following changes - 
-> * Line 132 change <kbd>public function can($permission)</kbd> to <kbd>public function can($permission, $arguments = [])</kbd>
-> * Line 145 change <kbd>if ($role->can($permission)) {</kbd> to <kbd>if ($role->can($permission, $arguments)) {</kbd>
-> * Line 207 change <kbd>return $this->can($permission);</kbd> to <kbd>return $this->can($permission, $arguments);</kbd>
-> I will remove this construction section once Shinobi has its update...
->
-> :construction:
+    use Illuminate\Auth\Authenticatable;
+    use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Auth\Passwords\CanResetPassword;
+    use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+    use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+
+    use Caffeinated\Shinobi\Traits\ShinobiTrait;
+
+    class User extends Model implements AuthenticatableContract,
+                                        CanResetPasswordContract
+    {
+        use Authenticatable, CanResetPassword, ShinobiTrait;
 
 Once this is all finished, you should be able to go to
 
