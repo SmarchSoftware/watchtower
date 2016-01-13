@@ -174,45 +174,29 @@ return [
     | linkage.
     |
     */ 
-
    'dashboard' => [
         'users' => [
             'name'  => "Users",            
             'route' => 'watchtower.user.index',
             'icon'  => 'fa fa-user fa-5x',
-            'colour'=> 'primary',
-            'nav'   => [
-                'title' => '',
-                'icon'  => '',
-                'route' => ''
-            ]
+            'colour'=> 'primary'
         ],
 
         'roles' => [
             'name'  => "Roles",
             'route' => 'watchtower.role.index',
             'icon'  => 'fa fa-users fa-5x',
-            'colour'=> 'info',
-            'nav'   => [
-                'title' => '',
-                'icon'  => '',
-                'route' => ''
-            ]
+            'colour'=> 'info'
         ],
 
         'permissions' => [
             'name'  => "Permissions",
             'route' => 'watchtower.permission.index',
             'icon'  => 'fa fa-5x fa-key',
-            'colour'=> 'success',
-            'nav'   => [
-                'title' => '',
-                'icon'  => '',
-                'route' => ''
-            ]
+            'colour'=> 'success'
         ],
     ],
-
+    
 
     /*
     |--------------------------------------------------------------------------
