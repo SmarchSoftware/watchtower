@@ -82,23 +82,23 @@ To permit the ability to restrict and permit access to the various admin areas o
     php artisan db:seed --class Smarch\Watchtower\Seeds\WatchtowerTableSeeder
 
 #### :memo: Shinobi usage requirements
-If you are installing Shinobi now, with Watchtower, you will need to also make the following changes so that you can use Shinobi's RBAC functions instead of Laravel defaulting to its own "Gate" authorization methods. Modify your User model to reflect the following changes : 
+If you are installing Shinobi now, with Watchtower, you will need to also make the following changes so that you can use Shinobi's RBAC functions instead of Laravel defaulting to its own "Gate" authorization methods. Modify your User model to reflect the following changes _(stripping out Laravel's Authorizable contracts and traits)_ : 
 
+    <?php
     namespace App;
-    
-    use Caffeinated\Shinobi\Traits\ShinobiTrait; // <-- Add this for Shinobi
-    ...
-    // comment out the following line to stop Laravel's Gate Authorization
-    //use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-    ...
-    
+
+    use Illuminate\Auth\Authenticatable;
+    use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Auth\Passwords\CanResetPassword;
+    use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+    use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+
+    use Caffeinated\Shinobi\Traits\ShinobiTrait;
+
     class User extends Model implements AuthenticatableContract,
-                                       // AuthorizableContract,//<-- Commentout
                                         CanResetPasswordContract
     {
-	    // use ShinobiTrait instead of Authorizable
-        use Authenticatable, CanResetPassword, ShinobiTrait; //Authorizable
-        ...
+        use Authenticatable, CanResetPassword, ShinobiTrait;
 
 Once this is all finished, you should be able to go to
 
