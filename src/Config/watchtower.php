@@ -11,9 +11,6 @@ return [
     | You can choose your own views for each page, and the permissions (if
     | any at all) required to access all the different sections.
     |
-    */
-
-    /*
     |--------------------------------------------------------------------------
     | Title for this user admin section
     |--------------------------------------------------------------------------
@@ -22,7 +19,6 @@ return [
     |
     */
 	'site_title' => 'Watchtower',
-
 
 
     /*
@@ -35,9 +31,31 @@ return [
     | Watchtower will check if there is a "theme" defined in Auth->user()
     | and use that one if one is found, othewise it uses the default.
     |
-    */   
+    */
    'default_theme' => 'spacelab',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Routes
+    |--------------------------------------------------------------------------
+    |
+    | Laravel 5.2 changed the routes that they always used for authentication. 
+    | Watchtower will try to detect (below) which route to choose, however,
+    | you can specify the authentication routes your app will use.
+    |
+    | Laravel 5.1 default:
+    |   /auth/login, /auth/logout and /auth/register
+    |
+    | Laravel 5.2 default:
+    |   /login, /logout and /register
+    |
+    */
+    'auth_routes' => [
+        'login'     => (str_contains( app()->version(), '5.1') ? '/auth' : '').'/login',
+        'logout'    => (str_contains( app()->version(), '5.1') ? '/auth' : '').'/logout',
+        'register'  => (str_contains( app()->version(), '5.1') ? '/auth' : '').'/register',
+    ],
 
 
     /*
@@ -95,7 +113,6 @@ return [
     ],
 
 
-
     /*
     |--------------------------------------------------------------------------
     | Watchtower Views
@@ -143,7 +160,6 @@ return [
             'role'      => 'watchtower::permission.role'
         ]
     ],
-
 
 
     /*
