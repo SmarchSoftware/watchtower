@@ -6,6 +6,9 @@ return [
     | Watchtower Navigation Menu
     |--------------------------------------------------------------------------
     |
+    | The navigation links that run across the top of the Watchtower master 
+    | layout? That's these options right here. Add as many of them as you
+    | want to have appear.
     |
     */ 
     'navigation' => [ 
@@ -23,6 +26,9 @@ return [
                   'class' => 'fa fa-fw fa-th-list',
                   'route' => 'watchtower.user.index'
                 ],
+
+                'separator',
+                
                 [
                   'title' => 'User Matrix',
                   'class' => 'fa fa-fw fa-table',
@@ -45,6 +51,9 @@ return [
                   'class' => 'fa fa-fw fa-th-list',
                   'route' => 'watchtower.role.index'
                 ],
+
+                  'separator',
+
                 [
                   'title' => 'Role Matrix',
                   'class' => 'fa fa-fw fa-table',
@@ -67,6 +76,9 @@ return [
                   'class' => 'fa fa-fw fa-th-list',
                   'route' => 'watchtower.permission.index'
                 ],
+
+                  'separator',
+                  
                 [
                   'title' => 'Permission Matrix',
                   'class' => 'fa fa-fw fa-table',
