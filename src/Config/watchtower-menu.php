@@ -80,7 +80,7 @@ return [
                   'separator',
                   
                 [
-                  'title' => 'Permission Matrix',
+                  'title' => 'Role Matrix',
                   'class' => 'fa fa-fw fa-table',
                   'route' => 'watchtower.role.matrix'
                 ]
