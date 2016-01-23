@@ -174,6 +174,7 @@ return [
     | linkage.
     |
     */ 
+
    'dashboard' => [
         'users' => [
             'name'  => "Users",            
@@ -196,7 +197,22 @@ return [
             'colour'=> 'success'
         ],
     ],
-    
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Route Prefix
+    |--------------------------------------------------------------------------
+    |
+    | If you want to prefix all your watchtower routes, enter the prefix here.
+    | https://laravel.com/docs/5.2/routing#route-group-prefixes for info.
+    | 
+    | i.e 'route_prefix' => 'admin' will change your urls to look
+    | like 'http://<yoursite>/admin/watchtower/user' instead of
+    | 'http://<yoursite>/watchtower/user'. Default is none.
+    |
+    */
+   'route_prefix' => '',
 
     /*
     |--------------------------------------------------------------------------
