@@ -21,11 +21,11 @@ class WatchtowerServiceProvider extends ServiceProvider
 
         // Publishes package files
         $this->publishes([
-            __DIR__.'/Config/Watchtower.php' => config_path('watchtower.php')
+            __DIR__.'/Config/watchtower.php' => config_path('watchtower.php')
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/Config/Watchtower-menu.php' => config_path('watchtower-menu.php')
+            __DIR__.'/Config/watchtower-menu.php' => config_path('watchtower-menu.php')
         ], 'config-menu');
 
         $this->publishes([
@@ -33,8 +33,8 @@ class WatchtowerServiceProvider extends ServiceProvider
         ], 'views');
 
         // Merge config files
-        $this->mergeConfigFrom(__DIR__.'/Config/Watchtower.php','watchtower');
-        $this->mergeConfigFrom(__DIR__.'/Config/Watchtower-menu.php','watchtower-menu');
+        $this->mergeConfigFrom(__DIR__.'/Config/watchtower.php','watchtower');
+        $this->mergeConfigFrom(__DIR__.'/Config/watctower-menu.php','watchtower-menu');
     }
 
     /**
