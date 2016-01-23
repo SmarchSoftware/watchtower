@@ -174,7 +174,6 @@ return [
     | linkage.
     |
     */ 
-
    'dashboard' => [
         'users' => [
             'name'  => "Users",            
