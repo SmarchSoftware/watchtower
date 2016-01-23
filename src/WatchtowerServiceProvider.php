@@ -34,7 +34,7 @@ class WatchtowerServiceProvider extends ServiceProvider
 
         // Merge config files
         $this->mergeConfigFrom(__DIR__.'/Config/watchtower.php','watchtower');
-        $this->mergeConfigFrom(__DIR__.'/Config/watctower-menu.php','watchtower-menu');
+        $this->mergeConfigFrom(__DIR__.'/Config/watchtower-menu.php','watchtower-menu');
     }
 
     /**
