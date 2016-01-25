@@ -201,7 +201,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Route Prefix
+    | Route Options
     |--------------------------------------------------------------------------
     |
     | If you want to prefix all your watchtower routes, enter the prefix here.
@@ -211,8 +211,14 @@ return [
     | like 'http://<yoursite>/admin/watchtower/user' instead of
     | 'http://<yoursite>/watchtower/user'. Default is none.
     |
+    | If you want to use something other than "watchtower" in your named routes
+    | you can specify it here.
+    |
     */
-   'route_prefix' => '',
+    'route' => [
+        'prefix'    => '',
+        'as'        => 'watchtower.'
+    ],
 
     /*
     |--------------------------------------------------------------------------

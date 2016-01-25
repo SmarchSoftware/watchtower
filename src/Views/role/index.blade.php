@@ -5,7 +5,7 @@
     <h1>Roles
     <div class="btn-group pull-right" role="group" aria-label="...">
       @if ( Shinobi::can( config('watchtower.acl.role.viewmatrix', false) ) )
-      <a href="{{ route('watchtower.role.matrix') }}">
+      <a href="{{ route( config('watchtower.route.as') .'role.matrix') }}">
       <button type="button" class="btn btn-default">
         <i class="fa fa-th fa-fw"></i> 
         <span class="hidden-xs hidden-sm">Role Matrix</span>
@@ -13,7 +13,7 @@
       @endif
 
       @if ( Shinobi::can( config('watchtower.acl.role.create', false) ) )
-        <a href="{{ route('watchtower.role.create') }}">
+        <a href="{{ route( config('watchtower.route.as') .'role.create') }}">
         <button type="button" class="btn btn-info">
           <i class="fa fa-plus fa-fw"></i> 
           <span class="hidden-xs hidden-sm">Add New Role</span>
@@ -23,7 +23,7 @@
     </h1>
 
     <!-- search bar -->
-    @include( config('watchtower.views.layouts.search'), [ 'search_route' => 'watchtower.role.index', 'items' => $roles, 'acl' => 'role' ] )
+    @include( config('watchtower.views.layouts.search'), [ 'search_route' => config('watchtower.route.as') .'role.index', 'items' => $roles, 'acl' => 'role' ] )
 
     <div class="table">
         <table class="table table-hover">
@@ -39,7 +39,7 @@
                 <td>{{ $item->id }}</td>
                 
                 <td>
-                    <a href="{{ route('watchtower.role.show', $item->id) }}">{{ $item->name }}</a>
+                    <a href="{{ route( config('watchtower.route.as') .'role.show', $item->id) }}">{{ $item->name }}</a>
                     @if ($item->special == 'all-access')
                       <i class="fa fa-star text-success"></i> 
                     @elseif ($item->special == 'no-access')
@@ -49,7 +49,7 @@
                 
                 <td>
                     @if ( Shinobi::can( config('watchtower.acl.role.permission', false)) )
-                    <a href="{{ route('watchtower.role.permission.edit', $item->id) }}">
+                    <a href="{{ route( config('watchtower.route.as') .'role.permission.edit', $item->id) }}">
                       <button type="button" class="btn btn-primary btn-xs">
                       <i class="fa fa-key fa-fw"></i> 
                       <span class="hidden-xs hidden-sm">Permissions</span>
@@ -57,7 +57,7 @@
                     @endif
 
                     @if ( Shinobi::can( config('watchtower.acl.role.user', false)) )
-                    <a href="{{ route('watchtower.role.user.edit', $item->id) }}">
+                    <a href="{{ route( config('watchtower.route.as') .'role.user.edit', $item->id) }}">
                       <button type="button" class="btn btn-primary btn-xs">
                       <i class="fa fa-user fa-fw"></i> 
                       <span class="hidden-xs hidden-sm">Users</span>
@@ -65,7 +65,7 @@
                     @endif
 
                     @if ( Shinobi::can( config('watchtower.acl.role.edit', false)) )
-                    <a href="{{ route('watchtower.role.edit', $item->id) }}">
+                    <a href="{{ route( config('watchtower.route.as') .'role.edit', $item->id) }}">
                       <button type="button" class="btn btn-default btn-xs">
                       <i class="fa fa-pencil fa-fw"></i> 
                       <span class="hidden-xs hidden-sm">Update</span>
@@ -73,7 +73,7 @@
                     @endif
 
                     @if ( Shinobi::can( config('watchtower.acl.role.destroy', false)) )
-                      {!! Form::open(['method'=>'delete','route'=> ['watchtower.role.destroy',$item->id], 'style' => 'display:inline']) !!}
+                      {!! Form::open(['method'=>'delete','route'=> [ config('watchtower.route.as') .'role.destroy',$item->id], 'style' => 'display:inline']) !!}
                         <button type="submit" class="btn btn-danger btn-xs">
                         <i class="fa fa-trash-o fa-lg"></i> 
                         <span class="hidden-xs hidden-sm">Delete</span>

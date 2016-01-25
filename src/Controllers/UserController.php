@@ -79,7 +79,7 @@ class UserController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! User created.";
 		}
 
-		return redirect()->route('watchtower.user.index')
+		return redirect()->route( config('watchtower.route.as') . 'user.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -139,7 +139,7 @@ class UserController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! User edited.";
 		}
 		
-		return redirect()->route('watchtower.user.index')
+		return redirect()->route( config('watchtower.route.as') . 'user.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -160,7 +160,7 @@ class UserController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! User deleted.";
 		}
 
-		return redirect()->route('watchtower.user.index')
+		return redirect()->route( config('watchtower.route.as') . 'user.index')
 					->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -209,7 +209,7 @@ class UserController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! User roles edited.";
 		}
 
-		return redirect()->route('watchtower.user.index')
+		return redirect()->route( config('watchtower.route.as') . 'user.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -260,7 +260,7 @@ class UserController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! User roles updated.";
 		}
 
-		return redirect()->route('watchtower.user.matrix')
+		return redirect()->route( config('watchtower.route.as') . 'user.matrix')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 

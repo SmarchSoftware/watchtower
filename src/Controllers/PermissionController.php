@@ -97,7 +97,7 @@ class PermissionController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! Permission created.";
 		}
 
-		return redirect()->route('watchtower.permission.index')
+		return redirect()->route( config('watchtower.route.as') .'permission.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -158,7 +158,7 @@ class PermissionController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! Permission edited.";
 		}
 
-		return redirect()->route('watchtower.permission.index')
+		return redirect()->route( config('watchtower.route.as') .'permission.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -179,7 +179,7 @@ class PermissionController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! Permission deleted.";
 		}
 
-		return redirect()->route('watchtower.permission.index')
+		return redirect()->route( config('watchtower.route.as') .'permission.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -228,7 +228,7 @@ class PermissionController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! Permission roles edited.";
 		}
 
-		return redirect()->route('watchtower.permission.index')
+		return redirect()->route( config('watchtower.route.as') .'permission.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 

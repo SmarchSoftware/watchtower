@@ -5,7 +5,7 @@
   <h1>'{{ $role->name }}' Permissions</h1>
   <hr/>
 
-  {!! Form::model($role, [ 'route' => [ 'watchtower.role.permission.update', $role->id ], 'class' => 'form-horizontal']) !!}
+  {!! Form::model($role, [ 'route' => [ config('watchtower.route.as') .'role.permission.update', $role->id ], 'class' => 'form-horizontal']) !!}
   {!! Form::hidden('id', $role->id) !!}
 
   <div class="row">
