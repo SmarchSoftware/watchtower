@@ -21,7 +21,7 @@ class WatchtowerServiceProvider extends ServiceProvider
 
         // Publishes package files
         $this->publishes([
-            __DIR__.'/Config/Watchtower.php' => config_path('watchtower.php')
+            __DIR__.'/Config/watchtower.php' => config_path('watchtower.php')
         ], 'config');
 
         $this->publishes([
@@ -29,7 +29,7 @@ class WatchtowerServiceProvider extends ServiceProvider
         ], 'views');
 
         // Merge config files
-        $this->mergeConfigFrom(__DIR__.'/Config/Watchtower.php','watchtower');
+        $this->mergeConfigFrom(__DIR__.'/Config/watchtower.php','watchtower');
     }
 
     /**

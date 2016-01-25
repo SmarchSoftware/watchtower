@@ -201,6 +201,27 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Route Options
+    |--------------------------------------------------------------------------
+    |
+    | If you want to prefix all your watchtower routes, enter the prefix here.
+    | https://laravel.com/docs/5.2/routing#route-group-prefixes for info.
+    | 
+    | i.e 'route_prefix' => 'admin' will change your urls to look
+    | like 'http://<yoursite>/admin/watchtower/user' instead of
+    | 'http://<yoursite>/watchtower/user'. Default is none.
+    |
+    | If you want to use something other than "watchtower" in your named routes
+    | you can specify it here.
+    |
+    */
+    'route' => [
+        'prefix'    => '',
+        'as'        => 'watchtower.'
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Watchtower pagination
     |--------------------------------------------------------------------------
     |

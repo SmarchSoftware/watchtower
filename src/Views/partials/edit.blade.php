@@ -5,7 +5,7 @@
     <h1>{{ ( ($show == '0') ? 'Edit' : 'Viewing' ) }} '{{ $resource->name }}'</h1>
     <hr/>
 
-    {!! Form::model($resource, ['method' => 'PATCH', 'route' => [ 'watchtower.'.$route.'.update', $resource->id ], 'class' => 'form-horizontal']) !!}
+    {!! Form::model($resource, ['method' => 'PATCH', 'route' => [ config('watchtower.route.as') . $route .'.update', $resource->id ], 'class' => 'form-horizontal']) !!}
     {!! Form::hidden('id', $resource->id) !!}
 
     <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">

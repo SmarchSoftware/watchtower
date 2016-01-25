@@ -5,7 +5,7 @@
     <h1>Create New {{ $route }}</h1>
     <hr/>
 
-    {!! Form::open( ['route' => 'watchtower.'.$route.'.store', 'class' => 'form-horizontal']) !!}
+    {!! Form::open( ['route' => config('watchtower.route.as') . $route .'.store', 'class' => 'form-horizontal']) !!}
     
     <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
         {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}

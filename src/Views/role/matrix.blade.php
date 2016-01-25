@@ -10,7 +10,7 @@
       This page might not be formatted properly for this screen due to the complexity of Role Based Access Control permissioning.
     </div>
 
-    {!! Form::open( [ 'route' => [ 'watchtower.role.matrix' ], 'class' => 'form-horizontal'] ) !!}
+    {!! Form::open( [ 'route' => [ config('watchtower.route.as') .'role.matrix' ], 'class' => 'form-horizontal'] ) !!}
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -27,7 +27,7 @@
                     </span>
                   </th>
                     @foreach ($roles as $r)
-                      <th> {{ $r->name }} <a href="{{ route('watchtower.role.show',$r->id) }}">
+                      <th> {{ $r->name }} <a href="{{ route( config('watchtower.route.as') .'role.show',$r->id) }}">
                         <button type="button" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-link"></span></button></a>
                       </th>
                     @endforeach

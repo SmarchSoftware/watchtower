@@ -99,7 +99,7 @@ class RoleController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! Role created.";
 		}
 
-		return redirect()->route('watchtower.role.index')
+		return redirect()->route( config('watchtower.route.as') .'role.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -159,7 +159,7 @@ class RoleController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! Role edited.";
 		}
 
-		return redirect()->route('watchtower.role.index')
+		return redirect()->route( config('watchtower.route.as') .'role.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -180,7 +180,7 @@ class RoleController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! Role deleted.";
 		}
 
-		return redirect()->route('watchtower.role.index')
+		return redirect()->route( config('watchtower.route.as') .'role.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -229,7 +229,7 @@ class RoleController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! Role permissions updated.";
 		}
 
-		return redirect()->route('watchtower.role.index')
+		return redirect()->route( config('watchtower.route.as') .'role.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -278,7 +278,7 @@ class RoleController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! Role users updated.";
 		}
 
-		return redirect()->route('watchtower.role.index')
+		return redirect()->route( config('watchtower.route.as') .'role.index')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
@@ -330,7 +330,7 @@ class RoleController extends Controller
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! Role permissions updated.";
 		}
 
-		return redirect()->route('watchtower.role.matrix')
+		return redirect()->route( config('watchtower.route.as') .'role.matrix')
 				->with( ['flash' => ['message' => $message, 'level' =>  $level] ] );
 	}
 
