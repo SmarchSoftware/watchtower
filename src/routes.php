@@ -1,6 +1,7 @@
 <?php
 
 Route::group( [ 
+		'middleware'=> config('watchtower.route.middleware'),
 		'prefix' => config('watchtower.route.prefix'),
 		'as' => config('watchtower.route.as')
 	  ], function () {

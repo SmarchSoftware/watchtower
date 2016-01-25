@@ -216,7 +216,8 @@ return [
     */
     'route' => [
         'prefix'    => '',
-        'as'        => 'watchtower.'
+        'as'        => 'watchtower.',
+        'middleware'=> (str_contains( app()->version(), '5.2') ? ['web'] : [''])
     ],
 
     /*

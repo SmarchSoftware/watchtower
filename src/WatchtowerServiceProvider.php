@@ -52,7 +52,7 @@ class WatchtowerServiceProvider extends ServiceProvider
 
         // load our routes
         if (! $this->app->routesAreCached()) {
-            require $routes_file;
+            require __DIR__.'/routes.php';
         }
 
         // View Composer
