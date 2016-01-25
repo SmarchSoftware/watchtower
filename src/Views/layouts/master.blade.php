@@ -67,37 +67,26 @@
 						<li><a href="{{ url( config('watchtower.auth_routes.login') ) }}">Login</a></li>
 						<li><a href="{{ url( config('watchtower.auth_routes.register') ) }}">Register</a></li>
 					@else
+						<!-- navigation links -->
+						@foreach( config('watchtower-menu.navigation') as $nav_menu )
 				        <li class="dropdown">
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Users">
-				          <i class="fa fa-user fa-lg"></i><span class="sr-only"> Users</span> <span class="caret"></span></a>
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="{{ $nav_menu['group'] }}">
+				          <i class="{{$nav_menu['class']}}"></i><span class="sr-only"> {{$nav_menu['group']}}</span> <span class="caret"></span></a>
 				          <ul class="dropdown-menu">
-				            <li><a href="{{ route( config('watchtower.route.as') . 'user.create') }}"><i class="fa fa-fw fa-plus"></i>  Add user</a></li>
-				            <li><a href="{{ route( config('watchtower.route.as') . 'user.index') }}"><i class="fa fa-fw fa-th-list"></i>  List users</a></li>
-				            <li><a href="{{ route( config('watchtower.route.as') . 'user.matrix') }}"><i class="fa fa-fw fa-table"></i> User Matrix</a></li>
+				          	@forelse($nav_menu['links'] as $navlink)
+				          		@if ($navlink == 'separator')
+				             		<li role="separator" class="divider"></li>
+				             	@else
+				             		<li><a href="{{ route($navlink['route']) }}"><i class="{{ $navlink['class'] }}"></i>  {{ $navlink['title'] }}</a></li>
+				             	@endif
+				            @empty
+				             <li><a href="#">No links defined yet</a></li>
+				            @endforelse
 				          </ul>
 				        </li>
+						@endforeach
 
-				        <li class="dropdown">
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Roles">
-				          <i class="fa fa-users fa-lg"></i><span class="sr-only"> Roles</span> <span class="caret"></span></a>
-				          <ul class="dropdown-menu">
-				            <li><a href="{{ route( config('watchtower.route.as') .'role.create') }}"><i class="fa fa-fw fa-plus"></i> Add role</a></li>
-				            <li><a href="{{ route( config('watchtower.route.as') .'role.index') }}"><i class="fa fa-fw fa-th-list"></i> List roles</a></li>
-				            <li><a href="{{ route( config('watchtower.route.as') .'role.matrix') }}"><i class="fa fa-fw fa-table"></i> Role Matrix</a></li>
-				          </ul>
-				        </li>
-
-				        <li class="dropdown">
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Permissions">
-				          <i class="fa fa-key fa-lg"></i><span class="sr-only"> Permissions</span> <span class="caret"></span></a>
-				          <ul class="dropdown-menu">
-				            <li><a href="{{ route( config('watchtower.route.as') .'permission.create') }}"><i class="fa fa-fw fa-plus"></i> Add permission</a></li>
-				            <li><a href="{{ route( config('watchtower.route.as') .'permission.index') }}"><i class="fa fa-fw fa-th-list"></i> List permissions</a></li>
-				            <li><a href="{{ route( config('watchtower.route.as') .'role.matrix') }}"><i class="fa fa-fw fa-table"></i> Role Matrix</a></li>
-				          </ul>
-				        </li>
-
-
+				        <!-- user dropdown links -->
 				        <li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="User Information">
 				          <i class="glyphicon glyphicon-user"></i> {{ Auth::user()->name }} <span class="caret"></span></a>
@@ -110,8 +99,7 @@
 								<li><a href="{{ route( config('watchtower.route.as') . 'role.permission.edit', $role->id) }}"><i class="fa fa-users fa-xs"></i> {{ $role->name }}</a></li>
 							@empty
 								<li><a href="#"><i class="fa fa-hand-stop-o fa-xs"></i> No roles</a></li>
-							@endforelse
-    						
+							@endforelse    						
     						<li role="separator" class="divider"></li>
 				            <li><a href="{{ url( config('watchtower.auth_routes.logout') ) }}"><i class="fa fa-fw fa-sign-out"></i> Logout</a></li>
 				          </ul>

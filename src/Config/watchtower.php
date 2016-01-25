@@ -52,9 +52,9 @@ return [
     |
     */
     'auth_routes' => [
-        'login'     => (str_contains( app()->version(), '5.1') ? '/auth' : '').'/login',
-        'logout'    => (str_contains( app()->version(), '5.1') ? '/auth' : '').'/logout',
-        'register'  => (str_contains( app()->version(), '5.1') ? '/auth' : '').'/register',
+        'login'     => (str_contains( app()->version(), '5.2') ? '' : '/auth').'/login',
+        'logout'    => (str_contains( app()->version(), '5.2') ? '' : '/auth').'/logout',
+        'register'  => (str_contains( app()->version(), '5.2') ? '' : '/auth').'/register',
     ],
 
 
@@ -174,7 +174,6 @@ return [
     | linkage.
     |
     */ 
-
    'dashboard' => [
         'users' => [
             'name'  => "Users",            
