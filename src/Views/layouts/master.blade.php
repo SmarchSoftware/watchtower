@@ -76,6 +76,8 @@
 				          	@forelse($nav_menu['links'] as $navlink)
 				          		@if ($navlink == 'separator')
 				             		<li role="separator" class="divider"></li>
+				             	@elseif ($navlink['route'] === 'header')
+    								<li class="text-muted text-center"><i class="{{ $navlink['class'] }}"></i> {{ $navlink['title'] }}</li>
 				             	@else
 				             		<li><a href="{{ route($navlink['route']) }}"><i class="{{ $navlink['class'] }}"></i>  {{ $navlink['title'] }}</a></li>
 				             	@endif
