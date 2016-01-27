@@ -44,12 +44,6 @@ class WatchtowerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Grab appropriate routes file for version.
-        $routes_file = __DIR__.'/routes.php';
-        if ( str_contains( app()->version(), '5.2.' ) ){
-            $routes_file = __DIR__.'/5.2_routes.php';
-        } 
-
         // load our routes
         if (! $this->app->routesAreCached()) {
             require __DIR__.'/routes.php';
