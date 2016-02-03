@@ -2,7 +2,7 @@
 [![Laravel 5.1](https://img.shields.io/badge/Laravel-5.x-orange.svg?style=flat-square)](http://laravel.com)
 [![Packagist Version](https://img.shields.io/packagist/v/smarch/watchtower.svg?style=flat-square)](https://packagist.org/packages/smarch/watchtower)
 [![Total Downloads](https://img.shields.io/packagist/dt/smarch/watchtower.svg?style=flat-square)](https://packagist.org/packages/smarch/watchtower)
-[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star?style=social)](https://github.com/SmarchSoftware/watchtower)
+[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star)](https://github.com/SmarchSoftware/watchtower)
 
 
 
