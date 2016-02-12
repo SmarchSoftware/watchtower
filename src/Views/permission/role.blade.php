@@ -6,7 +6,6 @@
   <hr/>
 
   {!! Form::model($permission, [ 'route' => [ config('watchtower.route.as') .'permission.role.update', $permission->id ], 'class' => 'form-horizontal']) !!}
-  {!! Form::hidden('id', $permission->id) !!}
 
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -16,7 +15,7 @@
         </div>
         
         <div class="panel-body">
-          @foreach($roles->chunk(6) as $c)
+          @forelse($roles->chunk(6) as $c)
             @foreach ($c as $p)
             <div class="col-md-2 col-sm-3 col-xs-4">
             <label class="checkbox-inline" title="{{ $p->slug }}">
@@ -29,7 +28,9 @@
             </label>
             </div>
             @endforeach
-          @endforeach
+          @empty
+            <span class="text-warning"><i class="fa fa-warning text-warning"></i> This permission does not have any defined roles.</span>
+          @endforelse
         </div>
       </div>
     </div>
@@ -43,7 +44,7 @@
         </div>
         
         <div class="panel-body">
-          @foreach($available_roles->chunk(6) as $chunk)
+          @forelse($available_roles->chunk(6) as $chunk)
             @foreach ($chunk as $perm)
             <div class="col-md-2 col-sm-3 col-xs-4">
             <label class="checkbox-inline" title="{{ $perm->slug }}">
@@ -56,7 +57,9 @@
             </label>
             </div>
             @endforeach
-          @endforeach
+          @empty
+            <span class="text-danger"><i class="fa fa-warning text-danger"></i> There aren't any available roles.</span>
+          @endforelse
         </div>
       </div>
     </div>

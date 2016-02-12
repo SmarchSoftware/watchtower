@@ -6,7 +6,6 @@
     <hr/>
 
     {!! Form::model($resource, ['method' => 'PATCH', 'route' => [ 'watchtower.user.update', $resource->id ], 'class' => 'form-horizontal']) !!}
-    {!! Form::hidden('id', $resource->id) !!}
 
     <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
         {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}

@@ -6,7 +6,6 @@
   <hr/>
 
   {!! Form::model($user, [ 'route' => [ 'watchtower.user.role.update', $user->id ], 'class' => 'form-horizontal']) !!}
-  {!! Form::hidden('id', $user->id) !!}
 
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -16,7 +15,7 @@
         </div>
         
         <div class="panel-body">
-          @foreach($roles->chunk(6) as $c)
+          @forelse($roles->chunk(6) as $c)
             @foreach ($c as $r)
             <div class="col-md-2 col-sm-3 col-xs-4">
             <label class="checkbox-inline" title="{{ $r->id }}">
@@ -29,7 +28,9 @@
             </label>
             </div>
             @endforeach
-          @endforeach
+          @empty
+            <span class="text-warning"><i class="fa fa-warning text-warning"></i> This user does not have any defined roles.</span>
+          @endforelse
         </div>
       </div>
     </div>
@@ -44,7 +45,7 @@
         </div>
         
         <div class="panel-body">
-          @foreach($available_roles->chunk(6) as $chunk)
+          @forelse($available_roles->chunk(6) as $chunk)
             @foreach ($chunk as $ar)
             <div class="col-md-2 col-sm-3 col-xs-4">
             <label class="checkbox-inline" title="{{ $ar->id }}">
@@ -57,7 +58,9 @@
             </label>
             </div>
             @endforeach
-          @endforeach
+          @empty
+            <span class="text-danger"><i class="fa fa-warning text-danger"></i> There aren't any available roles.</span>
+          @endforelse
         </div>
       </div>
     </div>
@@ -86,7 +89,7 @@
         <div class="panel-body">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <ul class="list-unstyled">
-              @foreach($roles as $prole)
+              @forelse($roles as $prole)
               <li><strong>{{$prole->name}}</strong></li>
                 <ul>
                   @if ($prole->special == 'all-access')
@@ -94,15 +97,16 @@
                   @elseif ($prole->special == 'no-access')
                     <li><i class="fa fa-fw fa-ban text-danger"></i> No Access</li>
                   @else
-                    @if ( $prole->permissions()->count() <= 0 ) 
-                      <li>This role has no defined permissions</li>
-                    @endif
-                    @foreach($prole->permissions as $p)
+                    @forelse($prole->permissions as $p)
                       <li>{{$p->name}} <em>({{ $p->slug }})</em></li>
-                    @endforeach
+                    @empty
+                      <li>This role has no defined permissions</li>
+                    @endforelse
                   @endif
                 </ul>
-              @endforeach
+              @empty
+                <span class="text-danger"><i class="fa fa-warning text-danger"></i> There are no permissions defined for this user.</span>
+              @endforelse
             </ul>
           </div>
         </div>

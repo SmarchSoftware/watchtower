@@ -26,7 +26,8 @@ class StoreRequest extends Request
     public function rules()
     {
 
-        $tbl = $this->input('tbl');
+        $name = $this->route()->getName();
+        $tbl = ( str_contains($name, 'role') ) ? 'roles' : 'permissions';
 
        return [
             'name' => 'required|unique:'.$tbl.'|max:255|min:4',

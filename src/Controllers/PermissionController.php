@@ -25,7 +25,6 @@ class PermissionController extends Controller
 	 */
 	function __construct() {
 		$this->route = "permission";
-		$this->table = "permissions";
 	}
 
 	/**
@@ -74,8 +73,7 @@ class PermissionController extends Controller
 	{
 		if ( Shinobi::can( config('watchtower.acl.permission.create', false) ) ) {
 			return view( config('watchtower.views.permissions.create') )
-						->with('route', $this->route)
-						->with('tbl', $this->table);
+						->with('route', $this->route);
 		}
 
 		return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'create new permissions' ]);
@@ -132,9 +130,8 @@ class PermissionController extends Controller
 			$resource = Permission::findOrFail($id);
 			$show = "0";
 			$route = $this->route;
-			$tbl = $this->table;
 
-			return view( config('watchtower.views.permissions.edit'), compact('resource','show','route', 'tbl') );
+			return view( config('watchtower.views.permissions.edit'), compact('resource','show','route') );
 		}
 
 		return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'edit permissions' ]);

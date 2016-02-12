@@ -6,7 +6,6 @@
   <hr/>
 
   {!! Form::model($role, [ 'route' => [ config('watchtower.route.as') .'role.user.update', $role->id ], 'class' => 'form-horizontal']) !!}
-  {!! Form::hidden('id', $role->id) !!}
 
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -16,7 +15,7 @@
         </div>
         
         <div class="panel-body">
-          @foreach($users->chunk(6) as $c)
+          @forelse($users->chunk(6) as $c)
             @foreach ($c as $u)
             <div class="col-md-2 col-sm-3 col-xs-4">
             <label class="checkbox-inline" title="{{ $u->slug }}">
@@ -24,7 +23,9 @@
             </label>
             </div>
             @endforeach
-          @endforeach
+          @empty
+            <span class="text-warning"><i class="fa fa-warning text-warning"></i> This role does not have any defined users.</span>
+          @endforelse
         </div>
       </div>
     </div>
@@ -38,7 +39,7 @@
         </div>
         
         <div class="panel-body">
-          @foreach($available_users->chunk(6) as $chunk)
+          @forelse($available_users->chunk(6) as $chunk)
             @foreach ($chunk as $au)
             <div class="col-md-2 col-sm-3 col-xs-4">
             <label class="checkbox-inline" title="{{ $au->slug }}">
@@ -46,7 +47,9 @@
             </label>
             </div>
             @endforeach
-          @endforeach
+          @empty
+            <span class="text-danger"><i class="fa fa-warning text-danger"></i> There aren't any available users.</span>
+          @endforelse
         </div>
       </div>
     </div>

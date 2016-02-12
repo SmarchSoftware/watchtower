@@ -27,7 +27,6 @@ class RoleController extends Controller
 	function __construct()
 	{
 		$this->route = "role";
-		$this->table = "roles";
 	}
 
 	/**
@@ -76,8 +75,7 @@ class RoleController extends Controller
 	{
 		if ( Shinobi::can( config('watchtower.acl.role.create', false) ) ) {
 			return view( config('watchtower.views.roles.create') )
-				->with('route', $this->route)
-				->with('tbl', $this->table);
+				->with('route', $this->route);
 		}
 
 		return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'create new roles' ]);
@@ -133,9 +131,8 @@ class RoleController extends Controller
 			$resource = Role::findOrFail($id);
 			$show = "0";
 			$route = $this->route;
-			$tbl = $this->table;
 
-			return view( config('watchtower.views.roles.edit'), compact('resource','show','route','tbl') );
+			return view( config('watchtower.views.roles.edit'), compact('resource','show','route') );
 		}
 
 		return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'edit roles' ]);

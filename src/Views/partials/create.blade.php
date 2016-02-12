@@ -43,7 +43,6 @@
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::hidden('tbl', $tbl) !!}
             {!! Form::submit('Create '.$route, ['class' => 'btn btn-primary form-control']) !!}
         </div>    
     </div>

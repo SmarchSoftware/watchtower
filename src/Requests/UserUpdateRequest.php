@@ -39,8 +39,8 @@ class UserUpdateRequest extends Request
     {
   
        return [
-            'name' => 'required|max:255|unique:users,name,'.$this->get('id'),
-            'email' => 'required|email|unique:users,email,'.$this->get('id'),
+            'name' => 'required|max:255|unique:users,name,'.$this->user,
+            'email' => 'required|email|unique:users,email,'.$this->user,
             'password' => 'confirmed|min:6',
         ];
 

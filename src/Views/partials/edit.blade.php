@@ -6,7 +6,6 @@
     <hr/>
 
     {!! Form::model($resource, ['method' => 'PATCH', 'route' => [ config('watchtower.route.as') . $route .'.update', $resource->id ], 'class' => 'form-horizontal']) !!}
-    {!! Form::hidden('id', $resource->id) !!}
 
     <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
         {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
@@ -46,7 +45,6 @@
       @if ( Shinobi::can( config('watchtower.acl.'.$route.'.edit', false) ) ) 
          <div class="form-group">
              <div class="col-sm-offset-3 col-sm-3">
-                 {!! Form::hidden('tbl', $tbl) !!}
                  {!! Form::submit('Update '.$route, ['class' => 'btn btn-primary form-control']) !!}
              </div>
          </div>

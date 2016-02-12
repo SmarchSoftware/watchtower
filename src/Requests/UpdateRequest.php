@@ -25,11 +25,13 @@ class UpdateRequest extends Request
     public function rules()
     {
 
-        $tbl = $this->input('tbl');
+        $id = ( $this->route('permission') ) ?: $this->route('role');
+
+        $tbl = str_plural( $this->route()->parameterNames()[0] );
 
         return [
-            'slug' => 'required|unique:'.$tbl.',slug,'.$this->get('id').'|max:255|min:4',
-            'name' => 'required|unique:'.$tbl.',name,'.$this->get('id').'|max:255|min:4',            
+            'slug' => 'required|unique:'.$tbl.',slug,'.$id.'|max:255|min:4',
+            'name' => 'required|unique:'.$tbl.',name,'.$id.'|max:255|min:4',            
         ];
 
     }
