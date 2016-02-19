@@ -11,8 +11,8 @@
     </div>
 
     {!! Form::open( [ 'route' => [ config('watchtower.route.as') .'role.matrix' ], 'class' => 'form-horizontal'] ) !!}
-    <div class="table">
-        <table class="table table-bordered table-striped table-hover">
+    <div class="table" style="height:350px; overflow:auto; border: 1px dashed;">
+        <table class="table table-bordered table-striped table-hover" style=" margin-bottom:0">
             <thead>
                 <tr class="alert-warning">
                   <th class="text-center">
