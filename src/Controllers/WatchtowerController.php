@@ -20,7 +20,7 @@ class WatchtowerController extends Controller
     {
         if ( Shinobi::can( config('watchtower.acl.watchtower.index', false) ) ) {
             $links = config('watchtower.dashboard');
-            return view('watchtower::watchtower.index')
+            return view( config('watchtower.views.layouts.dashboard') )
                     ->with('dashboard', $links)
                     ->with('title', config('watchtower.site_title') );
         }
