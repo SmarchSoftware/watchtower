@@ -221,7 +221,7 @@ class UserController extends Controller
 	{
   		if ( Shinobi::can( config('watchtower.acl.user.viewmatrix', false) ) ) {
 			$roles = Role::all();
-			$users = User::all();
+			$users = User::orderBy('name')->get();
 			$us = DB::table('role_user')->select('role_id as r_id','user_id as u_id')->get();
 
 			$pivot = [];
