@@ -183,8 +183,8 @@
 		 * For Delete Modal prompts
 		 * 
 		 */
-	    $('form').submit(function(e) {
-		    if ( $(this).find('button[type="submit"]').hasClass('btn-danger') ) {
+	    $('button[type="submit"]').click(function(e) {
+		    if ( $(this).hasClass('btn-danger') ) {
 		        var currentForm = this;
 		        e.preventDefault();
 		        swal({
