@@ -31,10 +31,6 @@ class WatchtowerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/Views' => base_path('resources/views/smarch/watchtower')
         ], 'views');
-
-        // Merge config files
-        $this->mergeConfigFrom(__DIR__.'/Config/watchtower.php','watchtower');
-        $this->mergeConfigFrom(__DIR__.'/Config/watchtower-menu.php','watchtower-menu');
     }
 
     /**
@@ -44,6 +40,10 @@ class WatchtowerServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Merge config files
+        $this->mergeConfigFrom(__DIR__.'/Config/watchtower.php','watchtower');
+        $this->mergeConfigFrom(__DIR__.'/Config/watchtower-menu.php','watchtower-menu');
+
         // load our routes
         if (! $this->app->routesAreCached()) {
             require __DIR__.'/routes.php';
