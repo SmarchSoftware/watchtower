@@ -185,7 +185,7 @@
 		 */
 	    $('button[type="submit"]').click(function(e) {
 		    if ( $(this).hasClass('btn-danger') ) {
-		        var currentForm = this;
+		        var currentForm = this.closest("form");
 		        e.preventDefault();
 		        swal({
 		           title: "Are you sure?",
