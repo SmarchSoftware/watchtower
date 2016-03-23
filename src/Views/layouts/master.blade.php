@@ -42,6 +42,9 @@
 
 	<!-- modernizr -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+	@yield('header_assets')
+
 </head>
 
 <body>
@@ -217,5 +220,8 @@
 		    }
 	    });
     </script>
+
+	@yield('footer_assets')
+
   </body>
 </html>
