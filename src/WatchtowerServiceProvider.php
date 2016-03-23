@@ -29,7 +29,7 @@ class WatchtowerServiceProvider extends ServiceProvider
         ], 'config-menu');
 
         $this->publishes([
-            __DIR__.'/Views' => base_path('resources/views/smarch/watchtower')
+            __DIR__.'/Views' => base_path('resources/views/vendor/watchtower')
         ], 'views');
     }
 
