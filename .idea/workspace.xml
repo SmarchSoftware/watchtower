@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92b26678-868b-4b8d-817c-aabfd94675a5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Config/watchtower.php" afterPath="$PROJECT_DIR$/src/Config/watchtower.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/PermissionController.php" afterPath="$PROJECT_DIR$/src/Controllers/PermissionController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/RoleController.php" afterPath="$PROJECT_DIR$/src/Controllers/RoleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/UserController.php" afterPath="$PROJECT_DIR$/src/Controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/WatchtowerController.php" afterPath="$PROJECT_DIR$/src/Controllers/WatchtowerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Permission.php" afterPath="$PROJECT_DIR$/src/Models/Permission.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Role.php" afterPath="$PROJECT_DIR$/src/Models/Role.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/User.php" afterPath="$PROJECT_DIR$/src/Models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Requests/StoreRequest.php" afterPath="$PROJECT_DIR$/src/Requests/StoreRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Requests/UpdateRequest.php" afterPath="$PROJECT_DIR$/src/Requests/UpdateRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Requests/UserStoreRequest.php" afterPath="$PROJECT_DIR$/src/Requests/UserStoreRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Requests/UserUpdateRequest.php" afterPath="$PROJECT_DIR$/src/Requests/UserUpdateRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Seeds/WatchtowerTableSeeder.php" afterPath="$PROJECT_DIR$/src/Seeds/WatchtowerTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WatchtowerFacade.php" afterPath="$PROJECT_DIR$/src/WatchtowerFacade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WatchtowerServiceProvider.php" afterPath="$PROJECT_DIR$/src/WatchtowerServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes.php" afterPath="$PROJECT_DIR$/src/routes.php" />
-    </list>
+    <list default="true" id="92b26678-868b-4b8d-817c-aabfd94675a5" name="Default" comment="" />
     <ignored path="watchtower.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -295,12 +276,12 @@
       <updated>1466539998480</updated>
       <workItem from="1466539999644" duration="1534000" />
       <workItem from="1466606031551" duration="1073000" />
-      <workItem from="1466620251986" duration="796000" />
+      <workItem from="1466620251986" duration="889000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3403000" />
+    <option name="totallyTimeSpent" value="3496000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
