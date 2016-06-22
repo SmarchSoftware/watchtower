@@ -1,11 +1,11 @@
 <?php 
 
-namespace Elite-telecom\Watchtower\Models;
+namespace EliteTelecom\Watchtower\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Elite-telecom\Watchtower\Models\User;
-use Elite-telecom\Watchtower\Models\Permission;
+use EliteTelecom\Watchtower\Models\User;
+use EliteTelecom\Watchtower\Models\Permission;
 
 class Role extends Model
 {
@@ -29,7 +29,7 @@ class Role extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('Elite-telecom\Watchtower\Models\User');
+        return $this->belongsToMany('EliteTelecom\Watchtower\Models\User');
     }
     
     /**
@@ -37,7 +37,7 @@ class Role extends Model
      */
     public function permissions()
     {
-        return $this->belongsToMany('Elite-telecom\Watchtower\Models\Permission');
+        return $this->belongsToMany('EliteTelecom\Watchtower\Models\Permission');
     }
     
 }

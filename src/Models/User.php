@@ -1,10 +1,10 @@
 <?php
 
-namespace Elite-telecom\Watchtower\Models;
+namespace EliteTelecom\Watchtower\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Elite-telecom\Watchtower\Models\Role;
+use EliteTelecom\Watchtower\Models\Role;
 
 class User extends Model
 {
@@ -34,6 +34,6 @@ class User extends Model
      */
     public function roles()
     {
-        return $this->belongsToMany('Elite-telecom\Watchtower\Models\Role');
+        return $this->belongsToMany('EliteTelecom\Watchtower\Models\Role');
     }
 }

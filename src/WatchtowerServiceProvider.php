@@ -1,6 +1,6 @@
 <?php
 
-namespace Elite-telecom\Watchtower;
+namespace EliteTelecom\Watchtower;
 
 use Auth;
 use Config;

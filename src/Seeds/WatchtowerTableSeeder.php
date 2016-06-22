@@ -1,6 +1,6 @@
 <?php
 
-namespace Elite-telecom\Watchtower\Seeds;
+namespace EliteTelecom\Watchtower\Seeds;
 
 use DB;
 

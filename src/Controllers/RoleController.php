@@ -1,6 +1,6 @@
 <?php
 
-namespace Elite-telecom\Watchtower\Controllers;
+namespace EliteTelecom\Watchtower\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,12 +11,12 @@ use Carbon\Carbon;
 use DB;
 use Shinobi;
 
-use Elite-telecom\Watchtower\Models\Role;
-use Elite-telecom\Watchtower\Models\User;
-use Elite-telecom\Watchtower\Models\Permission;
+use EliteTelecom\Watchtower\Models\Role;
+use EliteTelecom\Watchtower\Models\User;
+use EliteTelecom\Watchtower\Models\Permission;
 
-use Elite-telecom\Watchtower\Requests\StoreRequest;
-use Elite-telecom\Watchtower\Requests\UpdateRequest;
+use EliteTelecom\Watchtower\Requests\StoreRequest;
+use EliteTelecom\Watchtower\Requests\UpdateRequest;
 
 class RoleController extends Controller
 {
