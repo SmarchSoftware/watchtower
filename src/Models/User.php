@@ -1,10 +1,10 @@
 <?php
 
-namespace Smarch\Watchtower\Models;
+namespace Elite-telecom\Watchtower\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Smarch\Watchtower\Models\Role;
+use Elite-telecom\Watchtower\Models\Role;
 
 class User extends Model
 {
@@ -34,6 +34,6 @@ class User extends Model
      */
     public function roles()
     {
-        return $this->belongsToMany('Smarch\Watchtower\Models\Role');
+        return $this->belongsToMany('Elite-telecom\Watchtower\Models\Role');
     }
 }

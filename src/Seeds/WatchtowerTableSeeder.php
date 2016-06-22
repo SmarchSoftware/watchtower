@@ -1,6 +1,6 @@
 <?php
 
-namespace Smarch\Watchtower\Seeds;
+namespace Elite-telecom\Watchtower\Seeds;
 
 use DB;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Smarch\Watchtower;
+namespace Elite-telecom\Watchtower;
 
 use Auth;
 use Config;

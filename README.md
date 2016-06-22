@@ -59,7 +59,7 @@ Once composer has installed the necessary packages for watchtower to function yo
         */
         Caffeinated\Shinobi\ShinobiServiceProvider::class, // For RBAC
         Collective\Html\HtmlServiceProvider::class, // For Watchtower Forms to function
-        Smarch\Watchtower\WatchtowerServiceProvider::class, // For Watchtower
+        Elite-telecom\Watchtower\WatchtowerServiceProvider::class, // For Watchtower
 
 #### :pencil: Facades
 While Watchtower itself does not need a facade, one is provided if you wish to use one. However the Shinobi and Forms facades are used heavily by Watchtower so be sure you add them to your Facades.
@@ -72,7 +72,7 @@ While Watchtower itself does not need a facade, one is provided if you wish to u
         'Form'     => Collective\Html\FormFacade::class,  // required for Watchtower Forms
         'HTML'     => Collective\Html\HtmlFacade::class,   // required for Watchtower Forms
         'Shinobi'  => Caffeinated\Shinobi\Facades\Shinobi::class, // For RBAC functions
-        //'Watchtower'=> Smarch\Watchtower\WatchtowerFacade::class, // not required, but available
+        //'Watchtower'=> Elite-telecom\Watchtower\WatchtowerFacade::class, // not required, but available
 
 #### :card_index: Database Migrations / Seeds
 
@@ -85,7 +85,7 @@ If you did not install Shinobi earlier, you will need to run the migration files
 
 To permit the ability to restrict and permit access to the various admin areas of Watchtower, you will need to run the Watchtower seeder which will prepopulate your database with permissions and roles.
 
-    php artisan db:seed --class Smarch\Watchtower\Seeds\WatchtowerTableSeeder
+    php artisan db:seed --class Elite-telecom\Watchtower\Seeds\WatchtowerTableSeeder
 
 #### :memo: Shinobi usage requirements
 If you are installing Shinobi now, with Watchtower, you will need to also make the following changes so that you can use Shinobi's RBAC functions instead of Laravel defaulting to its own "Gate" authorization methods. Modify your User model to reflect the following changes _(stripping out Laravel's Authorizable contracts and traits)_ : 
@@ -147,7 +147,7 @@ You will need the following routes for authentication. (also provided on Laravel
 	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 	Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-> :hand: **Note** As a convenience, the default Laravel auth views are included with Watchtower in the "vendor\smarch\watchtower\src\Views\auth" folder. Simply copy and paste the auth folder to your "root\resources\views" folder on your app to enable them.
+> :hand: **Note** As a convenience, the default Laravel auth views are included with Watchtower in the "vendor\Elite-telecom\Watchtower\src\Views\auth" folder. Simply copy and paste the auth folder to your "root\resources\views" folder on your app to enable them.
 
 #### :trident: Why "Watchtower"?
 I've been a DC geek for over 30 years now. Watchtower is the name of the floating spacestation the Justice League used to monitor / administer the super heroes. ....coulda been worse. I was thinking of going with OMAC for a while. :smile:

@@ -1,6 +1,6 @@
 <?php
 
-namespace Smarch\Watchtower\Controllers;
+namespace Elite-telecom\Watchtower\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,10 +11,10 @@ use Carbon\Carbon;
 use DB;
 use Shinobi;
 
-use Smarch\Watchtower\Models\User;
-use Smarch\Watchtower\Models\Role;
-use Smarch\Watchtower\Requests\UserStoreRequest;
-use Smarch\Watchtower\Requests\UserUpdateRequest;
+use Elite-telecom\Watchtower\Models\User;
+use Elite-telecom\Watchtower\Models\Role;
+use Elite-telecom\Watchtower\Requests\UserStoreRequest;
+use Elite-telecom\Watchtower\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
