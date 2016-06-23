@@ -19,7 +19,7 @@
             @foreach ($c as $u)
             <div class="col-md-2 col-sm-3 col-xs-4">
             <label class="checkbox-inline" title="{{ $u->slug }}">
-              <input type="checkbox" name="slug[]" value="{{$u->id}}" checked=""> {{ $u->name }}
+              <input type="checkbox" name="slug[]" value="{{$u->user_id}}" checked=""> {{ $u->login }}
             </label>
             </div>
             @endforeach

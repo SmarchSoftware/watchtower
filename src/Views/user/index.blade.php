@@ -25,22 +25,22 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>#</th><th>Name</th><th>Actions</th>
+                    <th>#</th><th>Login</th><th>Actions</th>
                 </tr>
             </thead>
 
             <tbody>
               @forelse($users as $item)
                <tr>
-                <td>{{ $item->id }}</td>
+                <td>{{ $item->user_id }}</td>
                 
                 <td>
-                    <a href="{{ route('watchtower.user.show', $item->id) }}">{{ $item->name }}</a>
+                    <a href="{{ route('watchtower.user.show', $item->user_id) }}">{{ $item->login }}</a>
                 </td>
                 
                 <td>
                     @if ( Shinobi::can( config('watchtower.acl.user.role', false)) )
-                    <a href="{{ route('watchtower.user.role.edit', $item->id) }}">
+                    <a href="{{ route('watchtower.user.role.edit', $item->user_id) }}">
                       <button type="button" class="btn btn-primary btn-xs">
                       <i class="fa fa-users fa-fw"></i> 
                       <span class="hidden-xs hidden-sm">Roles</span>
@@ -48,7 +48,7 @@
                     @endif
 
                     @if ( Shinobi::can( config('watchtower.acl.user.edit', false)) )
-                    <a href="{{ route('watchtower.user.edit', $item->id) }}">
+                    <a href="{{ route('watchtower.user.edit', $item->user_id) }}">
                       <button type="button" class="btn btn-default btn-xs">
                       <i class="fa fa-pencil fa-fw"></i> 
                       <span class="hidden-xs hidden-sm">Update</span>
@@ -57,7 +57,7 @@
 
 
                     @if ( Shinobi::can( config('watchtower.acl.user.destroy', false)) )
-                    {!! Form::open(['method'=>'delete','route'=> ['watchtower.user.destroy',$item->id], 'style' => 'display:inline']) !!}
+                    {!! Form::open(['method'=>'delete','route'=> ['watchtower.user.destroy',$item->user_id], 'style' => 'display:inline']) !!}
                       <button type="submit" class="btn btn-danger btn-xs">
                       <i class="fa fa-trash-o fa-lg"></i> 
                       <span class="hidden-xs hidden-sm">Delete</span>

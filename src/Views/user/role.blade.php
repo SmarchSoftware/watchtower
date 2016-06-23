@@ -2,10 +2,10 @@
 
 @section('content')
 
-  <h1>'{{ $user->name }}' Roles</h1>
+  <h1>'{{ $user->login }}' Roles</h1>
   <hr/>
 
-  {!! Form::model($user, [ 'route' => [ 'watchtower.user.role.update', $user->id ], 'class' => 'form-horizontal']) !!}
+  {!! Form::model($user, [ 'route' => [ 'watchtower.user.role.update', $user->user_id ], 'class' => 'form-horizontal']) !!}
 
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -83,7 +83,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="panel panel-info">
         <div class="panel-heading clearfix">
-          <h2 class="panel-title"><i class="fa fa-key"></i> {{$user->name}}'s Permissions (from current roles)</small></h2>
+          <h2 class="panel-title"><i class="fa fa-key"></i> {{$user->login}}'s Permissions (from current roles)</small></h2>
         </div>
         
         <div class="panel-body">

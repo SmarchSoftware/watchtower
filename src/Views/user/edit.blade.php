@@ -2,10 +2,10 @@
 
 @section('content')
 
-    <h1>Edit '{{ $resource->name }}'</h1>
+    <h1>Edit '{{ $resource->login }}'</h1>
     <hr/>
 
-    {!! Form::model($resource, ['method' => 'PATCH', 'route' => [ 'watchtower.user.update', $resource->id ], 'class' => 'form-horizontal']) !!}
+    {!! Form::model($resource, ['method' => 'PATCH', 'route' => [ 'watchtower.user.update', $resource->user_id ], 'class' => 'form-horizontal']) !!}
 
     <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
         {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
@@ -60,12 +60,12 @@
     @else
      <div class="form-group">
          <div class="col-sm-6 col-sm-offset-3">
-            <a href="{{ route('watchtower.user.edit', $resource->id) }}" class="pull-right" title="Edit this User">
+            <a href="{{ route('watchtower.user.edit', $resource->user_id) }}" class="pull-right" title="Edit this User">
               <i class="fa fa-pencil fa-fw"></i> 
               <span class="hidden-xs hidden-sm">Edit</span>
               </button></a>
 
-            <a href="{{ route('watchtower.user.role.edit', $resource->id) }}" title="Roles for this user">
+            <a href="{{ route('watchtower.user.role.edit', $resource->user_id) }}" title="Roles for this user">
               <i class="fa fa-key fa-fw"></i> 
               <span class="hidden-xs hidden-sm">Roles</span>
               </button></a>

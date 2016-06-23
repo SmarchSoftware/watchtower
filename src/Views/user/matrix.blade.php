@@ -40,7 +40,7 @@
                   <th class="alert-warning">
                     <a href="{{ route('watchtower.user.show',$u->id) }}">
                       <button type="button" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-link"></span></button></a>
-                    {{ $u->name }}
+                    {{ $u->login }}
                   </th>
                   @for ($i=0; $i < $roles->count(); $i++ )
                     <td data-container="body" data-trigger="focus" data-toggle="popover" data-placement="left" data-content="Role: {{$roles[$i]->name}}, User: {{$u->email}}">
