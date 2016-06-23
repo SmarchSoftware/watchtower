@@ -4,7 +4,7 @@ namespace EliteTelecom\Watchtower\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use EliteTelecom\Watchtower\Models\User;
+use App\Models\Db\User;
 use EliteTelecom\Watchtower\Models\Permission;
 
 class Role extends Model
@@ -29,7 +29,7 @@ class Role extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('EliteTelecom\Watchtower\Models\User');
+        return $this->belongsToMany('App\Models\Db\User');
     }
     
     /**

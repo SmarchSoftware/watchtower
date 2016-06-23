@@ -12,7 +12,7 @@ use DB;
 use Shinobi;
 
 use EliteTelecom\Watchtower\Models\Role;
-use EliteTelecom\Watchtower\Models\User;
+use App\Models\Db\User;
 use EliteTelecom\Watchtower\Models\Permission;
 
 use EliteTelecom\Watchtower\Requests\StoreRequest;
