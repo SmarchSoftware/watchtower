@@ -178,7 +178,7 @@ class UserController extends Controller
 			$roles = $user->roles;
 
 	    	$available_roles = Role::whereDoesntHave('users', function ($query) use ($id) {
-			    $query->where('user_id', $id);
+			    $query->where('user.user_id', $id);
 			})->get();
 
 			return view( config('watchtower.views.users.role'), compact('user', 'roles', 'available_roles') );
