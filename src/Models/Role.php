@@ -1,11 +1,11 @@
 <?php 
 
-namespace Smarch\Watchtower\Models;
+namespace EliteTelecom\Watchtower\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Smarch\Watchtower\Models\User;
-use Smarch\Watchtower\Models\Permission;
+use App\Models\Db\User;
+use EliteTelecom\Watchtower\Models\Permission;
 
 class Role extends Model
 {
@@ -29,7 +29,7 @@ class Role extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('Smarch\Watchtower\Models\User');
+        return $this->belongsToMany('App\Models\Db\User');
     }
     
     /**
@@ -37,7 +37,7 @@ class Role extends Model
      */
     public function permissions()
     {
-        return $this->belongsToMany('Smarch\Watchtower\Models\Permission');
+        return $this->belongsToMany('EliteTelecom\Watchtower\Models\Permission');
     }
     
 }

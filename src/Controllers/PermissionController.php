@@ -1,6 +1,6 @@
 <?php
 
-namespace Smarch\Watchtower\Controllers;
+namespace EliteTelecom\Watchtower\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -10,11 +10,11 @@ use Carbon\Carbon;
 
 use Shinobi;
 
-use Smarch\Watchtower\Models\Role;
-use Smarch\Watchtower\Models\Permission;
+use EliteTelecom\Watchtower\Models\Role;
+use EliteTelecom\Watchtower\Models\Permission;
 
-use Smarch\Watchtower\Requests\StoreRequest;
-use Smarch\Watchtower\Requests\UpdateRequest;
+use EliteTelecom\Watchtower\Requests\StoreRequest;
+use EliteTelecom\Watchtower\Requests\UpdateRequest;
 
 
 class PermissionController extends Controller

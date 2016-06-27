@@ -3,30 +3,33 @@
 @section('content')
 
     <h1>Roles
-    <div class="btn-group pull-right" role="group" aria-label="...">
-      @if ( Shinobi::can( config('watchtower.acl.role.viewmatrix', false) ) )
-      <a href="{{ route( config('watchtower.route.as') .'role.matrix') }}">
-      <button type="button" class="btn btn-default">
-        <i class="fa fa-th fa-fw"></i> 
-        <span class="hidden-xs hidden-sm">Role Matrix</span>
-      </button></a>
-      @endif
+        <div class="float-right" role="group" aria-label="...">
+            @if ( Shinobi::can( config('watchtower.acl.role.viewmatrix', false) ) )
+                <a href="{{ route( config('watchtower.route.as') .'role.matrix') }}">
+                    <button type="button" class="large button">
+                        <i class="fa fa-th fa-fw"></i>
+                        <span class="">Role Matrix</span>
+                    </button>
+                </a>
+            @endif
 
-      @if ( Shinobi::can( config('watchtower.acl.role.create', false) ) )
-        <a href="{{ route( config('watchtower.route.as') .'role.create') }}">
-        <button type="button" class="btn btn-info">
-          <i class="fa fa-plus fa-fw"></i> 
-          <span class="hidden-xs hidden-sm">Add New Role</span>
-        </button></a>
-      @endif
-    </div>
+            @if ( Shinobi::can( config('watchtower.acl.role.create', false) ) )
+                <a href="{{ route( config('watchtower.route.as') .'role.create') }}">
+                    <button type="button" class="large button">
+                        <i class="fa fa-plus fa-fw"></i>
+                        <span class="">Add New Role</span>
+                    </button>
+                </a>
+            @endif
+        </div>
     </h1>
+
 
     <!-- search bar -->
     @include( config('watchtower.views.layouts.search'), [ 'search_route' => config('watchtower.route.as') .'role.index', 'items' => $roles, 'acl' => 'role' ] )
 
     <div class="table">
-        <table class="table table-hover">
+        <table class="hover">
             <thead>
                 <tr>
                     <th>#</th><th>Name</th><th>Actions</th>
@@ -50,33 +53,33 @@
                 <td>
                     @if ( Shinobi::can( config('watchtower.acl.role.permission', false)) )
                     <a href="{{ route( config('watchtower.route.as') .'role.permission.edit', $item->id) }}">
-                      <button type="button" class="btn btn-primary btn-xs">
+                      <button type="button" class="small button">
                       <i class="fa fa-key fa-fw"></i> 
-                      <span class="hidden-xs hidden-sm">Permissions</span>
+                      <span>Permissions</span>
                       </button></a>
                     @endif
 
                     @if ( Shinobi::can( config('watchtower.acl.role.user', false)) )
                     <a href="{{ route( config('watchtower.route.as') .'role.user.edit', $item->id) }}">
-                      <button type="button" class="btn btn-primary btn-xs">
+                      <button type="button" class="small button">
                       <i class="fa fa-user fa-fw"></i> 
-                      <span class="hidden-xs hidden-sm">Users</span>
+                      <span>Users</span>
                       </button></a>
                     @endif
 
                     @if ( Shinobi::can( config('watchtower.acl.role.edit', false)) )
                     <a href="{{ route( config('watchtower.route.as') .'role.edit', $item->id) }}">
-                      <button type="button" class="btn btn-default btn-xs">
+                      <button type="button" class="small button">
                       <i class="fa fa-pencil fa-fw"></i> 
-                      <span class="hidden-xs hidden-sm">Update</span>
+                      <span>Update</span>
                       </button></a>
                     @endif
 
                     @if ( Shinobi::can( config('watchtower.acl.role.destroy', false)) )
                       {!! Form::open(['method'=>'delete','route'=> [ config('watchtower.route.as') .'role.destroy',$item->id], 'style' => 'display:inline']) !!}
-                        <button type="submit" class="btn btn-danger btn-xs">
+                        <button type="submit" class="alert small button">
                         <i class="fa fa-trash-o fa-lg"></i> 
-                        <span class="hidden-xs hidden-sm">Delete</span>
+                        <span>Delete</span>
                         </button>
                       {!! Form::close() !!}
                     @endif

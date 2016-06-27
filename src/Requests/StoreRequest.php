@@ -1,6 +1,6 @@
 <?php
 
-namespace Smarch\Watchtower\Requests;
+namespace EliteTelecom\Watchtower\Requests;
 
 use App\Http\Requests\Request;
 

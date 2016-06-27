@@ -1,6 +1,6 @@
 <?php
 
-namespace Smarch\Watchtower\Controllers;
+namespace EliteTelecom\Watchtower\Controllers;
 
 use Illuminate\Http\Request;
 

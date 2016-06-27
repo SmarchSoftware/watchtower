@@ -1,6 +1,6 @@
 <?php
 
-namespace Smarch\Watchtower\Controllers;
+namespace EliteTelecom\Watchtower\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,10 +11,10 @@ use Carbon\Carbon;
 use DB;
 use Shinobi;
 
-use Smarch\Watchtower\Models\User;
-use Smarch\Watchtower\Models\Role;
-use Smarch\Watchtower\Requests\UserStoreRequest;
-use Smarch\Watchtower\Requests\UserUpdateRequest;
+use App\Models\Db\User;
+use EliteTelecom\Watchtower\Models\Role;
+use EliteTelecom\Watchtower\Requests\UserStoreRequest;
+use EliteTelecom\Watchtower\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
@@ -34,11 +34,11 @@ class UserController extends Controller
   		if ( Shinobi::can( config('watchtower.acl.user.index', false) ) ) {
 			if ( $request->has('search_value') ) {
 				$value = $request->get('search_value');
-				$users = User::where('name', 'LIKE', '%'.$value.'%')
-					->orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
+				$users = User::where('login', 'LIKE', '%'.$value.'%')
+					->orderBy('login')->paginate( config('watchtower.pagination.users', 15) );
 				session()->flash('search_value', $value);
 			} else {
-				$users = User::orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
+				$users = User::orderBy('login')->paginate( config('watchtower.pagination.users', 15) );
 				session()->forget('search_value');	
 			}
 			
@@ -178,7 +178,7 @@ class UserController extends Controller
 			$roles = $user->roles;
 
 	    	$available_roles = Role::whereDoesntHave('users', function ($query) use ($id) {
-			    $query->where('user_id', $id);
+			    $query->where('user.user_id', $id);
 			})->get();
 
 			return view( config('watchtower.views.users.role'), compact('user', 'roles', 'available_roles') );
@@ -221,7 +221,7 @@ class UserController extends Controller
 	{
   		if ( Shinobi::can( config('watchtower.acl.user.viewmatrix', false) ) ) {
 			$roles = Role::all();
-			$users = User::orderBy('name')->get();
+			$users = User::orderBy('login')->get();
 			$us = DB::table('role_user')->select('role_id as r_id','user_id as u_id')->get();
 
 			$pivot = [];

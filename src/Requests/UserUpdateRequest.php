@@ -1,6 +1,6 @@
 <?php
 
-namespace Smarch\Watchtower\Requests;
+namespace EliteTelecom\Watchtower\Requests;
 
 use App\Http\Requests\Request;
 
@@ -39,8 +39,7 @@ class UserUpdateRequest extends Request
     {
   
        return [
-            'name' => 'required|max:255|unique:users,name,'.$this->user,
-            'email' => 'required|email|unique:users,email,'.$this->user,
+            'login' => 'required|unique:users,login,'.$this->user,
             'password' => 'confirmed|min:6',
         ];
 

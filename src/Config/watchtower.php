@@ -124,8 +124,8 @@ return [
     */   
    'views' => [
         'layouts' => [
-            'master'        => 'watchtower::layouts.master',
-            'flash'         => 'watchtower::partials.flash',
+            'pmaster'        => 'layouts.web',
+            'flash'         => 'partials.flash-message',
             'modal'         => 'watchtower::partials.modal',
             'search'        => 'watchtower::partials.search',
             'dashboard'     => 'watchtower::watchtower.index',
