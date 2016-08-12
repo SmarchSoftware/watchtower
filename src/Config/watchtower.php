@@ -23,6 +23,29 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Default model to use
+    |--------------------------------------------------------------------------
+    |
+    | By default, watchtower uses its own internal User model. If you have a 
+    | User model you would rather use, provide the name here.
+    |
+    | To provide additional Validation rules to the default Update or Store 
+    | form request, place them under the rules heading. By default, the
+    | rules for password, password confirmation and username are part
+    | of the request already. But you can override them with yours.
+    |
+    */
+    'user' => [
+        'model' => \Smarch\Watchtower\Models\User::class,
+        'rules' => [
+            'update' => [],
+            'store'  => [],
+        ],
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Default bootstrap theme
     |--------------------------------------------------------------------------
     |

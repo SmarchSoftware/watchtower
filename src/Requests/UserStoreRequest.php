@@ -38,10 +38,13 @@ class UserStoreRequest extends Request
     public function rules()
     {
   
-       return [
+       $rules = array_merge([
             'name' => 'required|max:255|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
-        ];
+        ], config('watchtower.user.rules.store') );
+
+       return $rules;
+       
     }
 }

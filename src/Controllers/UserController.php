@@ -19,10 +19,25 @@ use Smarch\Watchtower\Requests\UserUpdateRequest;
 class UserController extends Controller
 {
 
+	protected $model = \Smarch\Watchtower\Models\User::class;
+
 	/**
-	 * Set resource in constructor.
+	 * Set resource model in constructor.
 	 */
-	function __construct() {}
+	function __construct() {
+		$this->model = $this->getModel();
+	}
+
+
+	/**
+	 * Determine which model to use
+	 * @return Model Instance
+	 */
+	function getModel() {
+		$model = config('watchtower.user.model', $this->model);
+        return new $model;
+	}
+
 
 	/**
 	 * Display a listing of the resource.
@@ -34,11 +49,11 @@ class UserController extends Controller
   		if ( Shinobi::can( config('watchtower.acl.user.index', false) ) ) {
 			if ( $request->has('search_value') ) {
 				$value = $request->get('search_value');
-				$users = User::where('name', 'LIKE', '%'.$value.'%')
+				$users = $this->model::where('name', 'LIKE', '%'.$value.'%')
 					->orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
 				session()->flash('search_value', $value);
 			} else {
-				$users = User::orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
+				$users = $this->model::orderBy('name')->paginate( config('watchtower.pagination.users', 15) );
 				session()->forget('search_value');	
 			}
 			
@@ -47,6 +62,7 @@ class UserController extends Controller
 
 	 	return view( config('watchtower.views.layouts.unauthorized'), [ 'message' => 'view user list' ]);
 	}
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -74,7 +90,7 @@ class UserController extends Controller
 		$message = " You are not permitted to create users.";
 
 		if ( Shinobi::can ( config('watchtower.acl.user.create', false) ) ) {
-			User::create($request->all());
+			$this->model::create($request->all());
 			$level = "success";
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! User created.";
 		}
@@ -92,7 +108,7 @@ class UserController extends Controller
 	public function show($id)
 	{
   		if ( Shinobi::canAtLeast( [ config('watchtower.acl.user.show', false),  config('watchtower.acl.user.edit', false) ] ) ) {
-			$resource = User::findOrFail($id);
+			$resource = $this->model::findOrFail($id);
 			$show = "1";
 			return view( config('watchtower.views.users.show'), compact('resource','show') );
 	 	}
@@ -109,7 +125,7 @@ class UserController extends Controller
 	public function edit($id)
 	{
   		if ( Shinobi::canAtLeast( [ config('watchtower.acl.user.edit', false),  config('watchtower.acl.user.show', false) ] ) ) {
-			$resource = User::findOrFail($id);
+			$resource = $this->model::findOrFail($id);
 			$show = "0";
 			return view( config('watchtower.views.users.edit'), compact('resource','show') );
 	 	}
@@ -129,7 +145,7 @@ class UserController extends Controller
 		$message = " You are not permitted to update users.";
 
 		if ( Shinobi::can ( config('watchtower.acl.user.edit', false) ) ) {
-			$user = User::findOrFail($id);
+			$user = $this->model::findOrFail($id);
 			if ($request->get('password') == '') {
         		$user->update( $request->except('password') );
     		} else {
@@ -155,7 +171,7 @@ class UserController extends Controller
 		$message = " You are not permitted to destroy user objects";
 
 		if ( Shinobi::can ( config('watchtower.acl.user.destroy', false) ) ) {
-			User::destroy($id);
+			$this->model::destroy($id);
 			$level = "warning";
 			$message = "<i class='fa fa-check-square-o fa-1x'></i> Success! User deleted.";
 		}
@@ -173,7 +189,7 @@ class UserController extends Controller
 	public function editUserRoles($id)
 	{
   		if ( Shinobi::can( config('watchtower.acl.user.role', false) ) ) {
-			$user = User::findOrFail($id);
+			$user = $this->model::findOrFail($id);
 
 			$roles = $user->roles;
 
@@ -199,7 +215,7 @@ class UserController extends Controller
 		$message = " You are not permitted to update user roles.";
 
 		if ( Shinobi::can ( config('watchtower.acl.user.role', false) ) ) {
-			$user = User::findOrFail($id);
+			$user = $this->model::findOrFail($id);
 			if ($request->has('ids')) {
 				$user->roles()->sync( $request->get('ids') );
 			} else {
@@ -221,7 +237,7 @@ class UserController extends Controller
 	{
   		if ( Shinobi::can( config('watchtower.acl.user.viewmatrix', false) ) ) {
 			$roles = Role::all();
-			$users = User::orderBy('name')->get();
+			$users = $this->model::orderBy('name')->get();
 			$us = DB::table('role_user')->select('role_id as r_id','user_id as u_id')->get();
 
 			$pivot = [];
