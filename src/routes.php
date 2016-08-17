@@ -46,8 +46,7 @@ Route::group( [
     		'show'		=> config('watchtower.route.prefix') . 'role.show',
     		'store'		=> config('watchtower.route.prefix') . 'role.store',
     		'update'	=> config('watchtower.route.prefix') . 'role.update'
-			],
-			'except' => [ 'patch']
+			]
 		]
 	);
 
