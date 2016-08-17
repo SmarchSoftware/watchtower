@@ -28,4 +28,12 @@ class User extends Model
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+    
+    /**
+     * The roles that have the permissions.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('Smarch\Watchtower\Models\Role');
+    }
 }
