@@ -1,5 +1,3 @@
-# Not compatible with Laravel 5.3. None of the Shinobi permissions work. Still sorting it out.
-
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Laravel 5.1](https://img.shields.io/badge/Laravel-5.x-orange.svg?style=flat-square)](http://laravel.com)
 [![Packagist Version](https://img.shields.io/packagist/v/smarch/watchtower.svg?style=flat-square)](https://packagist.org/packages/smarch/watchtower)
@@ -8,8 +6,10 @@
 
 
 
-# The Watchtower
 
+
+# The Watchtower
+### For Laravel 5.3 use the develop branch. Make sure you add the necessary Shinobi lines to your User model to get the permissions to work.
 A front end (GUI) package for the [Caffeinated/Shinobi](https://github.com/caffeinated/shinobi) RBAC authorization system for Laravel **5**.
 
 ![enter image description here](http://i.imgur.com/zYBjWsF.png)
@@ -108,6 +108,22 @@ If you are installing Shinobi now, with Watchtower, you will need to also make t
     {
         use Authenticatable, CanResetPassword, ShinobiTrait;
 
+_For Laravel 5.3 your User model should look like this :_
+     
+    <?php
+    
+    namespace App;
+    
+    use Illuminate\Notifications\Notifiable;
+    use Illuminate\Foundation\Auth\User as Authenticatable;
+    
+    use Caffeinated\Shinobi\Traits\ShinobiTrait;
+    
+    class User extends Authenticatable
+    {
+        use Notifiable;
+        use ShinobiTrait;
+        
 Once this is all finished, you should be able to go to
 
 ### :earth_americas: http://yoursite/watchtower 
