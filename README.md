@@ -48,7 +48,12 @@ Depending on whether or not you have already installed Shinobi, your install is 
 
 #### :black_square_button: Composer
 
-    composer require "smarch/watchtower"
+##### _For Laravel 5.0 - 5.2 you can simply run this line at the command prompt._
+     composer require "smarch/watchtower"
+
+##### _For Laravel 5.3 put the following line in your composer.json file._
+
+    "smarch/watchtower": "@dev"
 
 #### :pencil: Service Provider
 
