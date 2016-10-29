@@ -60,19 +60,22 @@ Depending on whether or not you have already installed Shinobi, your install is 
 Once composer has installed the necessary packages for watchtower to function you need to open your laravel config page for service providers and add Watchtower. To properly function you need to have all 3 service providers referenced : Shinobi, [HTML Forms](https://laravelcollective.com/docs/5.1/html) and Watchtower.
 
 *config/app.php*
-       
+
+```php       
        /*
         * Third Party Service Providers
         */
         Caffeinated\Shinobi\ShinobiServiceProvider::class, // For RBAC
         Collective\Html\HtmlServiceProvider::class, // For Watchtower Forms to function
         Smarch\Watchtower\WatchtowerServiceProvider::class, // For Watchtower
+```
 
 #### :pencil: Facades
 While Watchtower itself does not need a facade, one is provided if you wish to use one. However the Shinobi and Forms facades are used heavily by Watchtower so be sure you add them to your Facades.
 
 *config/app.php*
 
+```php       
         /*
         * Third Party Service Providers
         */
@@ -81,12 +84,16 @@ While Watchtower itself does not need a facade, one is provided if you wish to u
         'Shinobi'  => Caffeinated\Shinobi\Facades\Shinobi::class, // For RBAC functions
         //'Watchtower'=> Smarch\Watchtower\WatchtowerFacade::class, // not required, but available
 
+```
+
 #### :card_index: Database Migrations / Seeds
 
 If you did not install Shinobi earlier, you will need to run the migration files to properly set up and create the necessary tables. From your command prompt (wherever you run your artisan commands) enter the following command <kbd>php artisan vendor:publish</kbd> and then <kbd>php artisan migrate</kbd>. This should properly create your necessary tables AND create the Watchtower config file *(which allows you to define any views / permissions you wish to change from their defaults)*.
 
+```bash
     php artisan vendor:publish
     php artisan migrate
+```
 
 > :hand: ***Note*** If you already have your roles and permissions set up, you can skip the following step and just change the Watchtower config file to reflect the permissions it should use to permit functionality.
 
@@ -96,6 +103,8 @@ To permit the ability to restrict and permit access to the various admin areas o
 
 #### :memo: Shinobi usage requirements
 If you are installing Shinobi now, with Watchtower, you will need to also make the following changes so that you can use Shinobi's RBAC functions instead of Laravel defaulting to its own "Gate" authorization methods. Modify your User model to reflect the following changes _(stripping out Laravel's Authorizable contracts and traits)_ : 
+
+```php
 
     <?php
     namespace App;
@@ -113,8 +122,12 @@ If you are installing Shinobi now, with Watchtower, you will need to also make t
     {
         use Authenticatable, CanResetPassword, ShinobiTrait;
 
+```
+
 _For Laravel 5.3 your User model should look like this :_
-     
+
+```php
+
     <?php
     
     namespace App;
@@ -129,6 +142,8 @@ _For Laravel 5.3 your User model should look like this :_
         use Notifiable;
         use ShinobiTrait;
         
+```
+
 Once this is all finished, you should be able to go to
 
 ### :earth_americas: http://yoursite/watchtower 
@@ -153,6 +168,8 @@ Watchtower does not ship enabled _(see note below after routes)_ with the defaul
 You will need the following routes for authentication. (also provided on Laravel auth link above) Copy these into your app/routes.php file _(or wherever you define your routes)_.
 
 	routes.php 
+```php
+
 	// Authentication routes...
 	Route::get('auth/login', 'Auth\AuthController@getLogin');
 	Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -169,6 +186,7 @@ You will need the following routes for authentication. (also provided on Laravel
 	// Password reset routes...
 	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 	Route::post('password/reset', 'Auth\PasswordController@postReset');
+```
 
 > :hand: **Note** As a convenience, the default Laravel auth views are included with Watchtower in the "vendor\smarch\watchtower\src\Views\auth" folder. Simply copy and paste the auth folder to your "root\resources\views" folder on your app to enable them.
 
